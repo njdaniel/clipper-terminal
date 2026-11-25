@@ -1,0 +1,9 @@
+tag=v2.0.0rc9 commit=da6b57aefdd62b44f675e434ffcfefca7f4025dd
+rustup_toolchain=1.99.1-x86_64-unknown-linux-gnu (overridden by '$WORK/nt-build/rust-toolchain.toml')
+rustc 1.99.1 (58cf8f9c3 2026-10-13)
+cargo 1.99.1 (5f94df478 2026-08-27)
+maturin 1.15.0
+python 3.13.14 sqlite 3.53.1
+uv 0.11.27 (x86_64-unknown-linux-gnu)
+cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39

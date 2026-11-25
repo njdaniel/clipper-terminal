@@ -1,0 +1,193 @@
+{
+ "execution_factories": {
+  "AxExecutionClientFactory": [
+   "nautilus_trader.adapters.architect_ax"
+  ],
+  "BetfairExecutionClientFactory": [
+   "nautilus_trader.adapters.betfair"
+  ],
+  "BinanceExecutionClientFactory": [
+   "nautilus_trader.adapters.binance"
+  ],
+  "BybitExecutionClientFactory": [
+   "nautilus_trader.adapters.bybit"
+  ],
+  "CoinbaseExecutionClientFactory": [
+   "nautilus_trader.adapters.coinbase"
+  ],
+  "DeribitExecutionClientFactory": [
+   "nautilus_trader.adapters.deribit"
+  ],
+  "DeriveExecutionClientFactory": [
+   "nautilus_trader.adapters.derive"
+  ],
+  "DydxExecutionClientFactory": [
+   "nautilus_trader.adapters.dydx"
+  ],
+  "ExecutionClient": [
+   "nautilus_trader.live.clients"
+  ],
+  "ExecutionClientFactory": [
+   "nautilus_trader.live.clients"
+  ],
+  "HyperliquidExecutionClientFactory": [
+   "nautilus_trader.adapters.hyperliquid"
+  ],
+  "InteractiveBrokersExecutionClientFactory": [
+   "nautilus_trader.adapters.interactive_brokers"
+  ],
+  "KalshiExecutionClientFactory": [
+   "nautilus_trader.adapters.kalshi"
+  ],
+  "KrakenExecutionClientFactory": [
+   "nautilus_trader.adapters.kraken"
+  ],
+  "LighterExecutionClientFactory": [
+   "nautilus_trader.adapters.lighter"
+  ],
+  "OKXExecutionClientFactory": [
+   "nautilus_trader.adapters.okx"
+  ],
+  "PolymarketExecutionClientFactory": [
+   "nautilus_trader.adapters.polymarket"
+  ],
+  "SandboxExecutionClientFactory": [
+   "nautilus_trader.adapters.sandbox"
+  ]
+ },
+ "module_import_errors": {
+  "nautilus_trader.persistence.catalog_to_df": "ModuleNotFoundError: No module named 'pyarrow'",
+  "nautilus_trader.persistence.loaders": "ModuleNotFoundError: No module named 'pandas'"
+ },
+ "must_fail": [
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.binance"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.interactive_brokers"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.blockchain"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader._libnautilus.binance"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader._libnautilus.interactive_brokers"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader._libnautilus.blockchain"
+  }
+ ],
+ "must_import": [
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.sandbox"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.databento"
+  }
+ ],
+ "native_execution_factories": {
+  "AxExecutionClientFactory": [
+   "_libnautilus.architect_ax"
+  ],
+  "BetfairExecutionClientFactory": [
+   "_libnautilus.betfair"
+  ],
+  "BinanceExecutionClientFactory": [
+   "_libnautilus.binance"
+  ],
+  "BybitExecutionClientFactory": [
+   "_libnautilus.bybit"
+  ],
+  "CoinbaseExecutionClientFactory": [
+   "_libnautilus.coinbase"
+  ],
+  "DeribitExecutionClientFactory": [
+   "_libnautilus.deribit"
+  ],
+  "DeriveExecutionClientFactory": [
+   "_libnautilus.derive"
+  ],
+  "DydxExecutionClientFactory": [
+   "_libnautilus.dydx"
+  ],
+  "HyperliquidExecutionClientFactory": [
+   "_libnautilus.hyperliquid"
+  ],
+  "InteractiveBrokersExecutionClientFactory": [
+   "_libnautilus.interactive_brokers"
+  ],
+  "KalshiExecutionClientFactory": [
+   "_libnautilus.kalshi"
+  ],
+  "KrakenExecutionClientFactory": [
+   "_libnautilus.kraken"
+  ],
+  "LighterExecutionClientFactory": [
+   "_libnautilus.lighter"
+  ],
+  "OKXExecutionClientFactory": [
+   "_libnautilus.okx"
+  ],
+  "PolymarketExecutionClientFactory": [
+   "_libnautilus.polymarket"
+  ],
+  "SandboxExecutionClientFactory": [
+   "_libnautilus.sandbox"
+  ]
+ },
+ "native_library": "$WORK/stock-venv/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so",
+ "native_submodules": [
+  "analysis",
+  "architect_ax",
+  "backtest",
+  "betfair",
+  "binance",
+  "blockchain",
+  "bybit",
+  "coinapi",
+  "coinbase",
+  "common",
+  "core",
+  "cryptography",
+  "data",
+  "databento",
+  "deribit",
+  "derive",
+  "dydx",
+  "execution",
+  "finfeed",
+  "hyperliquid",
+  "indicators",
+  "infrastructure",
+  "interactive_brokers",
+  "kalshi",
+  "kraken",
+  "lighter",
+  "live",
+  "model",
+  "network",
+  "okx",
+  "persistence",
+  "polymarket",
+  "portfolio",
+  "risk",
+  "sandbox",
+  "serialization",
+  "tardis",
+  "testkit",
+  "trading"
+ ],
+ "nautilus_version": "2.0.0rc9",
+ "pandas_present": false,
+ "python": "3.13.14"
+}

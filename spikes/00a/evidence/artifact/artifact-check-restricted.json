@@ -1,0 +1,90 @@
+{
+ "execution_factories": {
+  "ExecutionClient": [
+   "nautilus_trader.live.clients"
+  ],
+  "ExecutionClientFactory": [
+   "nautilus_trader.live.clients"
+  ],
+  "SandboxExecutionClientFactory": [
+   "nautilus_trader.adapters.sandbox"
+  ]
+ },
+ "module_import_errors": {
+  "nautilus_trader.persistence.catalog_to_df": "ModuleNotFoundError: No module named 'pyarrow'",
+  "nautilus_trader.persistence.loaders": "ModuleNotFoundError: No module named 'pandas'"
+ },
+ "must_fail": [
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.binance'",
+   "imported": false,
+   "module": "nautilus_trader.adapters.binance"
+  },
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.interactive_brokers'",
+   "imported": false,
+   "module": "nautilus_trader.adapters.interactive_brokers"
+  },
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.blockchain'",
+   "imported": false,
+   "module": "nautilus_trader.adapters.blockchain"
+  },
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.binance'; 'nautilus_trader._libnautilus' is not a package",
+   "imported": false,
+   "module": "nautilus_trader._libnautilus.binance"
+  },
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.interactive_brokers'; 'nautilus_trader._libnautilus' is not a package",
+   "imported": false,
+   "module": "nautilus_trader._libnautilus.interactive_brokers"
+  },
+  {
+   "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.blockchain'; 'nautilus_trader._libnautilus' is not a package",
+   "imported": false,
+   "module": "nautilus_trader._libnautilus.blockchain"
+  }
+ ],
+ "must_import": [
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.sandbox"
+  },
+  {
+   "imported": true,
+   "module": "nautilus_trader.adapters.databento"
+  }
+ ],
+ "native_execution_factories": {
+  "SandboxExecutionClientFactory": [
+   "_libnautilus.sandbox"
+  ]
+ },
+ "native_library": "$WORK/runtime/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so",
+ "native_submodules": [
+  "analysis",
+  "backtest",
+  "common",
+  "core",
+  "cryptography",
+  "data",
+  "databento",
+  "execution",
+  "indicators",
+  "infrastructure",
+  "live",
+  "model",
+  "network",
+  "persistence",
+  "portfolio",
+  "risk",
+  "sandbox",
+  "serialization",
+  "testkit",
+  "trading"
+ ],
+ "nautilus_version": "2.0.0rc9",
+ "pandas_present": false,
+ "python": "3.13.14"
+}

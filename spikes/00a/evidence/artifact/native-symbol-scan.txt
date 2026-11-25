@@ -1,0 +1,17 @@
+pattern                            restricted  stock
+nautilus_binance                   0           11
+nautilus_interactive_brokers       0           10
+nautilus_okx                       0           4
+nautilus_bybit                     0           3
+nautilus_blockchain                0           5
+nautilus_kraken                    0           4
+nautilus_polymarket                0           15
+nautilus_hyperliquid               0           6
+BinanceExecutionClient             0           6
+InteractiveBrokersExecutionClient  0           7
+OKXExecutionClient                 0           6
+nautilus_sandbox                   2           2
+nautilus_databento                 3           3
+SandboxExecutionClient             8           8
+120089896 runtime/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so
+204514824 stock-venv/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so

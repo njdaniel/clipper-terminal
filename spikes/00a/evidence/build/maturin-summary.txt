@@ -1,0 +1,3 @@
+🍹 Building a mixed python/rust project
+📡 Using build options features, no-default-features from pyproject.toml
+📦 Built wheel for CPython 3.13 to $WORK/dist/nautilus_trader-2.0.0rc9-cp313-cp313-manylinux_2_39_x86_64.whl

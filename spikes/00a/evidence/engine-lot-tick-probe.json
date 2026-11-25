@@ -1,0 +1,1 @@
+{"fills": [["100", "10.02"], ["50", "10.03"]], "refusals": [{"engine_denied": "O-20260101-000000-0A-000-2", "reason": "PRICE_PRECISION_EXCEEDS_MAXIMUM: field=PRICE, price=11.025, precision=3, max_precision=2"}], "cash": "98496.50 USD", "positions": [{"sym": "LOTS", "qty": "150", "realized_pnl": "0.00 USD", "side": "LONG"}]}

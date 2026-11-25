@@ -1,0 +1,7340 @@
+{
+ "started": "2026-11-25T22:27:41Z",
+ "runtime_python": "$WORK/runtime/bin/python",
+ "artifact": {
+  "execution_factories": {
+   "ExecutionClient": [
+    "nautilus_trader.live.clients"
+   ],
+   "ExecutionClientFactory": [
+    "nautilus_trader.live.clients"
+   ],
+   "SandboxExecutionClientFactory": [
+    "nautilus_trader.adapters.sandbox"
+   ]
+  },
+  "module_import_errors": {
+   "nautilus_trader.persistence.catalog_to_df": "ModuleNotFoundError: No module named 'pyarrow'",
+   "nautilus_trader.persistence.loaders": "ModuleNotFoundError: No module named 'pandas'"
+  },
+  "must_fail": [
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.binance'",
+    "imported": false,
+    "module": "nautilus_trader.adapters.binance"
+   },
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.interactive_brokers'",
+    "imported": false,
+    "module": "nautilus_trader.adapters.interactive_brokers"
+   },
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader.adapters.blockchain'",
+    "imported": false,
+    "module": "nautilus_trader.adapters.blockchain"
+   },
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.binance'; 'nautilus_trader._libnautilus' is not a package",
+    "imported": false,
+    "module": "nautilus_trader._libnautilus.binance"
+   },
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.interactive_brokers'; 'nautilus_trader._libnautilus' is not a package",
+    "imported": false,
+    "module": "nautilus_trader._libnautilus.interactive_brokers"
+   },
+   {
+    "error": "ModuleNotFoundError: No module named 'nautilus_trader._libnautilus.blockchain'; 'nautilus_trader._libnautilus' is not a package",
+    "imported": false,
+    "module": "nautilus_trader._libnautilus.blockchain"
+   }
+  ],
+  "must_import": [
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.sandbox"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.databento"
+   }
+  ],
+  "native_execution_factories": {
+   "SandboxExecutionClientFactory": [
+    "_libnautilus.sandbox"
+   ]
+  },
+  "native_library": "$WORK/runtime/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so",
+  "native_submodules": [
+   "analysis",
+   "backtest",
+   "common",
+   "core",
+   "cryptography",
+   "data",
+   "databento",
+   "execution",
+   "indicators",
+   "infrastructure",
+   "live",
+   "model",
+   "network",
+   "persistence",
+   "portfolio",
+   "risk",
+   "sandbox",
+   "serialization",
+   "testkit",
+   "trading"
+  ],
+  "nautilus_version": "2.0.0rc9",
+  "pandas_present": false,
+  "python": "3.13.14"
+ },
+ "artifact_stock_baseline": {
+  "execution_factories": {
+   "AxExecutionClientFactory": [
+    "nautilus_trader.adapters.architect_ax"
+   ],
+   "BetfairExecutionClientFactory": [
+    "nautilus_trader.adapters.betfair"
+   ],
+   "BinanceExecutionClientFactory": [
+    "nautilus_trader.adapters.binance"
+   ],
+   "BybitExecutionClientFactory": [
+    "nautilus_trader.adapters.bybit"
+   ],
+   "CoinbaseExecutionClientFactory": [
+    "nautilus_trader.adapters.coinbase"
+   ],
+   "DeribitExecutionClientFactory": [
+    "nautilus_trader.adapters.deribit"
+   ],
+   "DeriveExecutionClientFactory": [
+    "nautilus_trader.adapters.derive"
+   ],
+   "DydxExecutionClientFactory": [
+    "nautilus_trader.adapters.dydx"
+   ],
+   "ExecutionClient": [
+    "nautilus_trader.live.clients"
+   ],
+   "ExecutionClientFactory": [
+    "nautilus_trader.live.clients"
+   ],
+   "HyperliquidExecutionClientFactory": [
+    "nautilus_trader.adapters.hyperliquid"
+   ],
+   "InteractiveBrokersExecutionClientFactory": [
+    "nautilus_trader.adapters.interactive_brokers"
+   ],
+   "KalshiExecutionClientFactory": [
+    "nautilus_trader.adapters.kalshi"
+   ],
+   "KrakenExecutionClientFactory": [
+    "nautilus_trader.adapters.kraken"
+   ],
+   "LighterExecutionClientFactory": [
+    "nautilus_trader.adapters.lighter"
+   ],
+   "OKXExecutionClientFactory": [
+    "nautilus_trader.adapters.okx"
+   ],
+   "PolymarketExecutionClientFactory": [
+    "nautilus_trader.adapters.polymarket"
+   ],
+   "SandboxExecutionClientFactory": [
+    "nautilus_trader.adapters.sandbox"
+   ]
+  },
+  "module_import_errors": {
+   "nautilus_trader.persistence.catalog_to_df": "ModuleNotFoundError: No module named 'pyarrow'",
+   "nautilus_trader.persistence.loaders": "ModuleNotFoundError: No module named 'pandas'"
+  },
+  "must_fail": [
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.binance"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.interactive_brokers"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.blockchain"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader._libnautilus.binance"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader._libnautilus.interactive_brokers"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader._libnautilus.blockchain"
+   }
+  ],
+  "must_import": [
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.sandbox"
+   },
+   {
+    "imported": true,
+    "module": "nautilus_trader.adapters.databento"
+   }
+  ],
+  "native_execution_factories": {
+   "AxExecutionClientFactory": [
+    "_libnautilus.architect_ax"
+   ],
+   "BetfairExecutionClientFactory": [
+    "_libnautilus.betfair"
+   ],
+   "BinanceExecutionClientFactory": [
+    "_libnautilus.binance"
+   ],
+   "BybitExecutionClientFactory": [
+    "_libnautilus.bybit"
+   ],
+   "CoinbaseExecutionClientFactory": [
+    "_libnautilus.coinbase"
+   ],
+   "DeribitExecutionClientFactory": [
+    "_libnautilus.deribit"
+   ],
+   "DeriveExecutionClientFactory": [
+    "_libnautilus.derive"
+   ],
+   "DydxExecutionClientFactory": [
+    "_libnautilus.dydx"
+   ],
+   "HyperliquidExecutionClientFactory": [
+    "_libnautilus.hyperliquid"
+   ],
+   "InteractiveBrokersExecutionClientFactory": [
+    "_libnautilus.interactive_brokers"
+   ],
+   "KalshiExecutionClientFactory": [
+    "_libnautilus.kalshi"
+   ],
+   "KrakenExecutionClientFactory": [
+    "_libnautilus.kraken"
+   ],
+   "LighterExecutionClientFactory": [
+    "_libnautilus.lighter"
+   ],
+   "OKXExecutionClientFactory": [
+    "_libnautilus.okx"
+   ],
+   "PolymarketExecutionClientFactory": [
+    "_libnautilus.polymarket"
+   ],
+   "SandboxExecutionClientFactory": [
+    "_libnautilus.sandbox"
+   ]
+  },
+  "native_library": "$WORK/stock-venv/lib/python3.13/site-packages/nautilus_trader/_libnautilus.cpython-313-x86_64-linux-gnu.so",
+  "native_submodules": [
+   "analysis",
+   "architect_ax",
+   "backtest",
+   "betfair",
+   "binance",
+   "blockchain",
+   "bybit",
+   "coinapi",
+   "coinbase",
+   "common",
+   "core",
+   "cryptography",
+   "data",
+   "databento",
+   "deribit",
+   "derive",
+   "dydx",
+   "execution",
+   "finfeed",
+   "hyperliquid",
+   "indicators",
+   "infrastructure",
+   "interactive_brokers",
+   "kalshi",
+   "kraken",
+   "lighter",
+   "live",
+   "model",
+   "network",
+   "okx",
+   "persistence",
+   "polymarket",
+   "portfolio",
+   "risk",
+   "sandbox",
+   "serialization",
+   "tardis",
+   "testkit",
+   "trading"
+  ],
+  "nautilus_version": "2.0.0rc9",
+  "pandas_present": false,
+  "python": "3.13.14"
+ },
+ "backtestnode": {
+  "fills": [
+   {
+    "coid": "O-20260101-000000-0A-000-1",
+    "sym": "CLPR",
+    "side": "BUY",
+    "ts": 1767225601000000000,
+    "px": "10.00",
+    "qty": "1",
+    "commission": "0.00 USD",
+    "trade_id": "T-47f52b57608c6982-001",
+    "attribution": {
+     "idx": 1,
+     "leg": "ask",
+     "lag_ns": 0,
+     "origin": "feed_event"
+    }
+   },
+   {
+    "coid": "O-20260101-000001-0A-000-2",
+    "sym": "CLPR",
+    "side": "BUY",
+    "ts": 1767225602000000000,
+    "px": "20.00",
+    "qty": "1",
+    "commission": "0.00 USD",
+    "trade_id": "T-c737cb6ce619dd23-002",
+    "attribution": {
+     "idx": 2,
+     "leg": "ask",
+     "lag_ns": 0,
+     "origin": "feed_event"
+    }
+   },
+   {
+    "coid": "O-20260101-000002-0A-000-3",
+    "sym": "CLPR",
+    "side": "SELL",
+    "ts": 1767225603000000000,
+    "px": "30.00",
+    "qty": "1",
+    "commission": "0.00 USD",
+    "trade_id": "T-9d4b8ecc2c1f930f-003",
+    "attribution": {
+     "idx": 3,
+     "leg": "bid",
+     "lag_ns": 0,
+     "origin": "feed_event"
+    }
+   }
+  ],
+  "cash": "100000.00 USD",
+  "positions": [
+   {
+    "qty": "1",
+    "realized_pnl": "15.00 USD"
+   }
+  ],
+  "ledger": {
+   "fifo_realized_gross": "20.00",
+   "fees": "0.00",
+   "cash": "100000.00",
+   "open_lots": {
+    "CLPR": [
+     [
+      "1",
+      "20.00"
+     ]
+    ]
+   },
+   "position_qty": {
+    "CLPR": "1"
+   }
+  },
+  "catalog_files": [
+   "$WORK/catalog-fifo/data/equity/CLPR.SIM/1970-01-01T00-00-00-000000000Z_1970-01-01T00-00-00-000000000Z.parquet",
+   "$WORK/catalog-fifo/data/quotes/CLPR.SIM/2026-01-01T00-00-00-000000000Z_2026-01-01T00-00-04-000000000Z.parquet"
+  ],
+  "fixture_provenance": {
+   "generator": {
+    "name": "clipper-spike-00a-fixtures",
+    "version": "1"
+   },
+   "fixture": "fifo",
+   "seed": 0,
+   "corporate_actions": "declared none (synthetic instruments)",
+   "rows": 5,
+   "sha256": "2716dd74030268cb3d265aa2072c48cd31529ccc8342ce89b7c074cfe8158c9d"
+  },
+  "memory": {
+   "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r994bc36bf5494d31920dac2cfb409d47.scope",
+   "memory.peak": 54075392,
+   "memory.current": 54075392
+  },
+  "wall_s": 0.091
+ },
+ "timing": [
+  {
+   "case": "timer",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rb22527dec55341399dbc0eb736bbc30c.scope",
+     "memory.peak": 46354432,
+     "memory.current": 46354432
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]; non-feed fills [{'idx': 1, 'leg': 'ask', 'lag_ns': 500000000, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601500000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-971451ceb3bf0bbd-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 500000000,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r2f4e14b97362473588f6e71a191f95e0.scope",
+     "memory.peak": 44847104,
+     "memory.current": 44847104
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]; non-feed fills [{'idx': 1, 'leg': 'ask', 'lag_ns': 500000000, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601500000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-971451ceb3bf0bbd-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 500000000,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r41a3a3338d0943a6935a06d5942c0d73.scope",
+     "memory.peak": 44392448,
+     "memory.current": 44392448
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r799efeb56fa54899801816bb311b6cad.scope",
+     "memory.peak": 44593152,
+     "memory.current": 44593152
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222743-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645663694801343,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-ab70232299559079-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 389858,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.606,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r954a8e24e6dd4f08a88fe2b05c61972f.scope",
+     "memory.peak": 48312320,
+     "memory.current": 47915008
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222758-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645678388166919,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-2fb6ec7486fc038c-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2472499,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.505,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r498aa419d9b149ec8482fde2b217df27.scope",
+     "memory.peak": 48410624,
+     "memory.current": 47661056
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222812-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645693222164670,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-fc899dd2bcd178b2-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 297969,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-222812-0A-000-1",
+      "watermark": 1795645692971358538
+     },
+     {
+      "release": "O-20261125-222812-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795645693221866701,
+      "watermark": 1795645692971358538
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.505,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r643f4e883b15451090fcbb31756900b2.scope",
+     "memory.peak": 48250880,
+     "memory.current": 48160768
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]; non-feed fills [{'idx': 1, 'leg': 'ask', 'lag_ns': 500000000, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601500000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-971451ceb3bf0bbd-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 500000000,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.003,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r64ddbd790ce8407186d0f65ad142551a.scope",
+     "memory.peak": 44466176,
+     "memory.current": 44466176
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r2738e0218c6b48dca9ee77c204306cb9.scope",
+     "memory.peak": 44339200,
+     "memory.current": 44339200
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r60df80d5588a4d2c824044ecbc073ca0.scope",
+     "memory.peak": 44199936,
+     "memory.current": 44199936
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.036,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6d6b6fb9301e405bbde74cab8464b336.scope",
+     "memory.peak": 46456832,
+     "memory.current": 46456832
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]; non-feed fills [{'idx': 1, 'leg': 'ask', 'lag_ns': 126502271, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222828-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645708061607687,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-943796634ff8c392-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 126502271,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.606,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r70d6e7a65a964e44bdc0617b276620be.scope",
+     "memory.peak": 48144384,
+     "memory.current": 47902720
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]; non-feed fills [{'idx': 1, 'leg': 'ask', 'lag_ns': 127629526, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222842-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645722751100390,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-1b1e8a99ccc655a9-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 127629526,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.507,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r2c4822c18b9b4164811daac3d3c3296a.scope",
+     "memory.peak": 47931392,
+     "memory.current": 47648768
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "timer_decision",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222857-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645737471327581,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-00b840814bf692f5-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 368058,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-222857-0A-000-1",
+      "watermark": 1795645737221416625
+     },
+     {
+      "release": "O-20261125-222857-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795645737470959523,
+      "watermark": 1795645737221416625
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "timer_decision",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.605,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r028ba9c81a5c47c78441facacd795e30.scope",
+     "memory.peak": 48189440,
+     "memory.current": 48185344
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "timer_decision",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "5b0cbfd395f4ea4f73ebbc0fab90aef947809b1ec4a1ad395cf1e5edf428fc6e"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [] got [{'idx': 2, 'px': '12.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000002-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r483209b08bd243d1ba9cab853ba13114.scope",
+     "memory.peak": 44335104,
+     "memory.current": 44335104
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [] got [{'idx': 2, 'px': '12.02', 'qty': '1'}]; non-feed fills [{'idx': 2, 'leg': 'ask', 'lag_ns': 1000000, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000002-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602001000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-352df437a46ef454-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 1000000,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": false
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r837f2c0babfc4a55bf9936573cded6bb.scope",
+     "memory.peak": 44326912,
+     "memory.current": 44326912
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "FAIL",
+   "why": "expected [] got [{'idx': 2, 'px': '12.02', 'qty': '1'}]; non-feed fills [{'idx': 2, 'leg': 'ask', 'lag_ns': 1000000, 'origin': 'non_feed_release'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000002-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602001000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-352df437a46ef454-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 1000000,
+       "origin": "non_feed_release"
+      },
+      "seen_by_strategy": false
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.003,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r8514069b2938429ab7957a6feaf28d73.scope",
+     "memory.peak": 47116288,
+     "memory.current": 47116288
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000002-0A-000-1",
+      "watermark": 1767225602000000000
+     }
+    ],
+    "held_at_end": [
+     "O-20260101-000002-0A-000-1"
+    ],
+    "cash": "100000.00 USD",
+    "positions": [],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rf763b42d2f25413c81634432e9d3ab1f.scope",
+     "memory.peak": 44331008,
+     "memory.current": 44331008
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [] got [{'idx': 2, 'px': '12.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222912-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645752509926956,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-f04d90b3b979200e-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 354788,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.106,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r22d202250ad148548bb2d24b275a186c.scope",
+     "memory.peak": 48660480,
+     "memory.current": 47890432
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [] got [{'idx': 2, 'px': '12.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222926-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645766708305297,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-4a5b7e7afafe04a6-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 3107966,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.007,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r243ecf9785254ed699483127b83bd6ad.scope",
+     "memory.peak": 48578560,
+     "memory.current": 47624192
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "end_of_feed",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-222940-0A-000-1",
+      "watermark": 1795645780799483008
+     }
+    ],
+    "held_at_end": [
+     "O-20261125-222940-0A-000-1"
+    ],
+    "cash": "100000.00 USD",
+    "positions": [],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "end_of_feed",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.007,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rb0a695cf1b4e476db0d0aaaa04e3c5b0.scope",
+     "memory.peak": 48148480,
+     "memory.current": 47898624
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "end_of_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "630f333067bdb61d7458e0cd0bdf3f1aefaca121c022df08bbd6f07002fd1bc1"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-re3d4b511b6ea4238847f45ceb82f8861.scope",
+     "memory.peak": 44191744,
+     "memory.current": 44191744
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc118c772b0d24cb2b1418cd1e52b8f6b.scope",
+     "memory.peak": 44650496,
+     "memory.current": 44650496
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r191c2aabf4954599bad1bc9c9b12bcf1.scope",
+     "memory.peak": 44593152,
+     "memory.current": 44593152
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 3,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r58ed8ef95eb24b33a93aa66b6756143a.scope",
+     "memory.peak": 44326912,
+     "memory.current": 44326912
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-222954-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645794982756068,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-e82d6af636ab5ba1-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 328798,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.105,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc1934aaf5f224c99af15ae4f3ba154e9.scope",
+     "memory.peak": 48132096,
+     "memory.current": 47886336
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 2, 'px': '11.52', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223009-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645809178521271,
+      "px": "11.52",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-d7982d004ea001f8-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 2506158,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.48 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.006,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-reccbaf4c3f9946e184b76ac048e052b2.scope",
+     "memory.peak": 48160768,
+     "memory.current": 47640576
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "equal_timestamps",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223023-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645823520723214,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-d723c9cb6370fa3c-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 332079,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223023-0A-000-1",
+      "watermark": 1795645823270765838
+     },
+     {
+      "release": "O-20261125-223023-0A-000-1",
+      "on_idx": 3,
+      "on_ts": 1795645823520391135,
+      "watermark": 1795645823270765838
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "equal_timestamps",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.105,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-re2da69fa2e3b43039511cbdba9b30270.scope",
+     "memory.peak": 48443392,
+     "memory.current": 48443392
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "equal_timestamps",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "3458ae8b29a8601e5b67f0891ca40e03e7c0280ddc6d9da31672dece3496fd06"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r3f0f2786838d4c198a2c12f21f4525f1.scope",
+     "memory.peak": 46383104,
+     "memory.current": 46383104
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.01,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-reab4db9851e14564949ca05c27b06c01.scope",
+     "memory.peak": 46686208,
+     "memory.current": 46686208
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.003,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r255ca34be65b4c0f93d146ba5ef446ea.scope",
+     "memory.peak": 46743552,
+     "memory.current": 46743552
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 3,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r43ecebd965c64f6ead66e29357443be7.scope",
+     "memory.peak": 46919680,
+     "memory.current": 46919680
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223037-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645837828162995,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-e8ebce5c76b5f1a1-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 407228,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.007,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r93ffa781c9774e778c82a29d0c860773.scope",
+     "memory.peak": 50229248,
+     "memory.current": 49991680
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223051-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645851924000405,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-81811646e965a0d0-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2540858,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.106,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r871207beee744c9f90e92c0aa9cfe202.scope",
+     "memory.peak": 50540544,
+     "memory.current": 50270208
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "other_instrument",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223106-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645866369883923,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-f41f75da3e4370f6-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 313528,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223106-0A-000-1",
+      "watermark": 1795645866120009017
+     },
+     {
+      "release": "O-20261125-223106-0A-000-1",
+      "on_idx": 3,
+      "on_ts": 1795645866369570395,
+      "watermark": 1795645866120009017
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "other_instrument",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.106,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r3d7362e4bc674818b28b26bdeef158a4.scope",
+     "memory.peak": 50552832,
+     "memory.current": 50036736
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "other_instrument",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "41ae78144964ff26692bd97530a237a1fad9857cd43730ca7edb828c353ec88c"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r0801237aa9fc488eb49fb669a7001c4c.scope",
+     "memory.peak": 46452736,
+     "memory.current": 46452736
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.04,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6754522ad1e9405cb2c2610b8b584f75.scope",
+     "memory.peak": 46297088,
+     "memory.current": 46297088
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6311eed2d1f441c497b14176d58b16a6.scope",
+     "memory.peak": 44605440,
+     "memory.current": 44605440
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r483f1b2d95e14c0f9a8108b5d1c591ed.scope",
+     "memory.peak": 44343296,
+     "memory.current": 44343296
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223120-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645880686321594,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-788e10fe52f15ccd-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 362689,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.306,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rb2518a3e232d483a847bcc826eac190e.scope",
+     "memory.peak": 47890432,
+     "memory.current": 47878144
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223135-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645895082791388,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-b88a1a7bce862833-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2517359,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.306,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc009366d674d401babb3e62650f8283e.scope",
+     "memory.peak": 47886336,
+     "memory.current": 47620096
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "first_update_ordering",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223149-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645909725035057,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-356fcfc4115c219a-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 321269,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223149-0A-000-1",
+      "watermark": 1795645909475122451
+     },
+     {
+      "release": "O-20261125-223149-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795645909724713788,
+      "watermark": 1795645909475122451
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "first_update_ordering",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.306,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rac3749ec38234d39b3f7519a9b966fda.scope",
+     "memory.peak": 47915008,
+     "memory.current": 47894528
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "first_update_ordering",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "589f2fb765d5b58d1d47158864cb0e8b3078957bfbcb6518433ad6e7ddf6e932"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r9304f7ba72844da39191d6d9e0b17677.scope",
+     "memory.peak": 46366720,
+     "memory.current": 46366720
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225606000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-355a6342b9341981-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r9bbb8584685b476eb22fa58bf83e8799.scope",
+     "memory.peak": 46440448,
+     "memory.current": 46440448
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225606000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-355a6342b9341981-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r8629dd96c90b41bb9fc0861d865f292e.scope",
+     "memory.peak": 46395392,
+     "memory.current": 46395392
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225606000000000,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-355a6342b9341981-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225606000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r7da8b42ca17e4d63bf60649e0eddb172.scope",
+     "memory.peak": 46419968,
+     "memory.current": 46415872
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223204-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645924216273087,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-2dfeb55909ad1b5c-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 385138,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 15.307,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-ra0461ab5a10e491d9e5301a49ff36c4b.scope",
+     "memory.peak": 48152576,
+     "memory.current": 48148480
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '12.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223219-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645939617067044,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-5e7b280d73b86c4c-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2518568,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 15.307,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rd4166c092f924f02b8328d2038be3aa0.scope",
+     "memory.peak": 47890432,
+     "memory.current": 47624192
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "stale_feed",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223235-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645956268389277,
+      "px": "12.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-014acd386563b19d-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 416648,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223235-0A-000-1",
+      "watermark": 1795645955017528403
+     },
+     {
+      "release": "O-20261125-223235-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795645956267972629,
+      "watermark": 1795645955017528403
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "stale_feed",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 15.312,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r783544927fb240b5a248b7df28251e8e.scope",
+     "memory.peak": 48144384,
+     "memory.current": 47886336
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "stale_feed",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "b78bc7c55344592d3339dd3f78b74f4e179f81eb5aae46089cbd40bf7a47ed3c"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '11.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.004,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r0eb7f78d5cd54d6384e892b1780dad6c.scope",
+     "memory.peak": 46948352,
+     "memory.current": 46948352
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r3cfd1968d6294437a397030a868fda95.scope",
+     "memory.peak": 44322816,
+     "memory.current": 44322816
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r7b438e4c55d840af83e094dd492be5f2.scope",
+     "memory.peak": 46956544,
+     "memory.current": 46956544
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r424936486ae44460a795e36cf116c776.scope",
+     "memory.peak": 44662784,
+     "memory.current": 44662784
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '11.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223250-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645970800714190,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-6b3ca66c5015c2f0-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 387909,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.605,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rbf096c2e7140475e8caa4bce2bc7016b.scope",
+     "memory.peak": 47898624,
+     "memory.current": 47894528
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 3, 'px': '11.02', 'qty': '1'}] got [{'idx': 1, 'px': '11.02', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223305-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795645985502856225,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-f8c057cec5243eed-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2498609,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.507,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r17eac3b7b0b949a5ba2c88fb4abfc280.scope",
+     "memory.peak": 48148480,
+     "memory.current": 47640576
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "resting_orders",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223320-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646000592954044,
+      "px": "11.02",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-cfba9f5ecd2e5f57-001",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 194809,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223320-0A-000-1",
+      "watermark": 1795646000092401375
+     },
+     {
+      "release": "O-20261125-223320-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795646000341981083,
+      "watermark": 1795646000092401375
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99988.98 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "resting_orders",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.606,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r67bde8aede7b4b3fb148512fb66006e3.scope",
+     "memory.peak": 48193536,
+     "memory.current": 48193536
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "resting_orders",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "982eb53ecbb40aa4ed3e7c5932311e86a6d13eeaf1cff482ad16d9c06235af74"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r001676fff38949d49d864bf8ec5306bf.scope",
+     "memory.peak": 44388352,
+     "memory.current": 44388352
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.003,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rb8b2704a429342d9864bd1848a6b730f.scope",
+     "memory.peak": 46682112,
+     "memory.current": 46682112
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-re27688e387e449989d17b22c383af13c.scope",
+     "memory.peak": 44212224,
+     "memory.current": 44212224
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r7b2bfc92523a47cebceade6fa92715b7.scope",
+     "memory.peak": 46387200,
+     "memory.current": 46387200
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223335-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646015157250580,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-336c30a4522b0cbe-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 392789,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 14.805,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6d2e1287a4f84890886148d3c20b5e80.scope",
+     "memory.peak": 47902720,
+     "memory.current": 47902720
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223350-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646030045884651,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-beadcc9793dd23ec-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 1468553,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 14.805,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r213cc060285c4807bd066ebb7890dba2.scope",
+     "memory.peak": 47898624,
+     "memory.current": 47624192
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "partial_fills",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223404-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646045195181589,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-1a410e32685b7703-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 350798,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223404-0A-000-1",
+      "watermark": 1795646044945243903
+     },
+     {
+      "release": "O-20261125-223404-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795646045194830791,
+      "watermark": 1795646044945243903
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98898.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.806,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rafa30523e4734b0c8030bff15cf77026.scope",
+     "memory.peak": 48152576,
+     "memory.current": 47898624
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 1, 'px': '12.52', 'qty': '1'}] got [{'idx': 0, 'px': '10.20', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000100-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225660000000000,
+      "px": "10.20",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-6312bdc94e801d1d-005",
+      "attribution": {
+       "idx": 0,
+       "leg": "close",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99989.80 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rf9164a596c384289809c6c3b418cd713.scope",
+     "memory.peak": 48521216,
+     "memory.current": 48521216
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000100-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225670000000000,
+      "px": "12.52",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9efbe5cdc6043aa0-005",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.48 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rfda555cce36c42ba9b6e89d71b3569be.scope",
+     "memory.peak": 49045504,
+     "memory.current": 49045504
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000100-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225670000000000,
+      "px": "12.52",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9efbe5cdc6043aa0-005",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99987.48 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r65331a5013994945a42bccda57ca04bc.scope",
+     "memory.peak": 48529408,
+     "memory.current": 48529408
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000100-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225670000000000,
+      "px": "12.52",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9efbe5cdc6043aa0-005",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000100-0A-000-1",
+      "watermark": 1767225660000000000
+     },
+     {
+      "release": "O-20260101-000100-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1767225670000000000,
+      "watermark": 1767225660000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.48 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.021,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-raf1862b9d6b44de59cdeadfec4bdaa2f.scope",
+     "memory.peak": 48820224,
+     "memory.current": 48820224
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 1, 'px': '12.52', 'qty': '1'}] got [{'idx': 0, 'px': '10.20', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223434-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646074950802191,
+      "px": "10.20",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-03685acec26fc117-005",
+      "attribution": {
+       "idx": 0,
+       "leg": "close",
+       "lag_ns": 4691779,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99989.80 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": true,
+    "wall_s": 43.61,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r708856ea3c8d438d82087ec679a288d9.scope",
+     "memory.peak": 50245632,
+     "memory.current": 49983488
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 1, 'px': '12.52', 'qty': '1'}] got [{'idx': 0, 'px': '10.20', 'qty': '1'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223518-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646118638359763,
+      "px": "10.20",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-b26b5b9d5a5f181b-005",
+      "attribution": {
+       "idx": 0,
+       "leg": "close",
+       "lag_ns": 2620128,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "99989.80 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": true,
+    "wall_s": 43.605,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r9d23066288914ef4bf4db8b8b42d19ef.scope",
+     "memory.peak": 50180096,
+     "memory.current": 49721344
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "quotes_between_bars",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223602-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646164825722353,
+      "px": "12.52",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-ff1fb6d205b79123-005",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 314019,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223602-0A-000-1",
+      "watermark": 1795646162324895929
+     },
+     {
+      "release": "O-20261125-223602-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1795646164825408334,
+      "watermark": 1795646162324895929
+     }
+    ],
+    "held_at_end": [],
+    "cash": "99987.48 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "quotes_between_bars",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 43.605,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rd4b1e7eaa77c45e3939c5c356e6b86e4.scope",
+     "memory.peak": 50253824,
+     "memory.current": 50253824
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "quotes_between_bars",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 4,
+     "sha256": "a517473f7e7b8a693275e97d478a52675db15890fccb89ac2fa725388aba5978"
+    }
+   }
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "backtest",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}, {'idx': 1, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-002",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-003",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "baseline",
+    "liquidity_consumption": false,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6dd5a7219c6f4c489223c1e3642b859d.scope",
+     "memory.peak": 46313472,
+     "memory.current": 46313472
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "backtest",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "native",
+    "liquidity_consumption": false,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r3ddc582d267d4d5c8c3c05b34c31aefa.scope",
+     "memory.peak": 44294144,
+     "memory.current": 44294144
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "backtest",
+   "mechanism": "native_bounded",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "native_bounded",
+    "liquidity_consumption": false,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rb99404cd0ba8460c86a5063c4ee16403.scope",
+     "memory.peak": 44376064,
+     "memory.current": 44376064
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "backtest",
+   "mechanism": "gate",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": false,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc1b5e05fddd14956a517795cfe551868.scope",
+     "memory.peak": 44322816,
+     "memory.current": 44322816
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "sandbox",
+   "mechanism": "baseline",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223631-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646191601755698,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-aa4f0d5122ec0d21-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 336748,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223631-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646191851149648,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-a9b2a21adbabf8b1-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 219789,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223631-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646192101907943,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-a0329640153c02df-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 179729,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "baseline",
+    "liquidity_consumption": false,
+    "wall_s": 14.807,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r66517a814dc74cb789dbbde872a730e3.scope",
+     "memory.peak": 48353280,
+     "memory.current": 47894528
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "sandbox",
+   "mechanism": "native",
+   "verdict": "FAIL",
+   "why": "expected [{'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}, {'idx': 4, 'px': '11.02', 'qty': '100'}] got [{'idx': 1, 'px': '11.02', 'qty': '100'}, {'idx': 2, 'px': '11.02', 'qty': '100'}, {'idx': 3, 'px': '11.02', 'qty': '100'}]",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223646-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646206497223829,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-f2f03c43f316738b-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 2506572,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223646-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646206745003494,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-6e69184608ea2bf1-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 193150,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223646-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646206994767502,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-45f954a93c68ab24-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 157840,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "native",
+    "liquidity_consumption": false,
+    "wall_s": 14.806,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-reb67c13745f2444ca1bf3dc4ff40fbed.scope",
+     "memory.peak": 48181248,
+     "memory.current": 47644672
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  },
+  {
+   "case": "partial_fills[upstream-default-liquidity]",
+   "context": "sandbox",
+   "mechanism": "gate",
+   "verdict": "PASS",
+   "why": "",
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223701-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646221631356574,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-ffd6c1475183d47f-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 352798,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223701-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646221880998223,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-5ef8abafab0dc9b0-002",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 190339,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223701-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646222130700392,
+      "px": "11.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-7d180108d19926ed-003",
+      "attribution": {
+       "idx": 4,
+       "leg": "ask",
+       "lag_ns": 128220,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223701-0A-000-1",
+      "watermark": 1795646221381393207
+     },
+     {
+      "release": "O-20261125-223701-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795646221631003776,
+      "watermark": 1795646221381393207
+     }
+    ],
+    "held_at_end": [],
+    "cash": "96694.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "300",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "timing",
+    "case": "partial_fills",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": false,
+    "wall_s": 14.807,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-re3d3c9683e994c8d8adb52852b460934.scope",
+     "memory.peak": 48148480,
+     "memory.current": 47890432
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "partial_fills",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "b1e0424bc39a5dbdbc9fcd35be72b68cfe86569091ccd0af2c0548de25ff134f"
+    }
+   },
+   "diagnostic": true
+  }
+ ],
+ "codex_baselines": [
+  {
+   "variation": 1,
+   "mechanism": "baseline",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067260000000000,
+     "px": "1.10010",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-ff1a791313755199-009",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067620000000000,
+     "px": "1.10070",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-b00319889327ed53-034",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:01:00",
+    "px": "1.10010",
+    "seen_by_strategy": true
+   },
+   "codex_reported": {
+    "time": "00:01:00",
+    "px": "1.10010"
+   },
+   "wall_s": 0.089
+  },
+  {
+   "variation": 1,
+   "mechanism": "gate",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067320000000000,
+     "px": "1.10020",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-221045424c8efe88-013",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067680000000000,
+     "px": "1.10080",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-a2ceb9f0ecc884be-038",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:02:00",
+    "px": "1.10020",
+    "seen_by_strategy": true
+   },
+   "held_at_end": [],
+   "codex_reported": {
+    "time": "00:01:00",
+    "px": "1.10010"
+   },
+   "wall_s": 0.082
+  },
+  {
+   "variation": 2,
+   "mechanism": "baseline",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067320000000000,
+     "px": "1.10020",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-221045424c8efe88-013",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067680000000000,
+     "px": "1.10080",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-a2ceb9f0ecc884be-038",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:02:00",
+    "px": "1.10020",
+    "seen_by_strategy": true
+   },
+   "codex_reported": {
+    "time": "00:02:00",
+    "px": "1.10020"
+   },
+   "wall_s": 0.094
+  },
+  {
+   "variation": 2,
+   "mechanism": "gate",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067380000000000,
+     "px": "1.10030",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-51d365c91de7ac77-017",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067740000000000,
+     "px": "1.10090",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-77e0e82e07e3ca08-042",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:03:00",
+    "px": "1.10030",
+    "seen_by_strategy": true
+   },
+   "held_at_end": [],
+   "codex_reported": {
+    "time": "00:02:00",
+    "px": "1.10020"
+   },
+   "wall_s": 0.086
+  },
+  {
+   "variation": 3,
+   "mechanism": "baseline",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067262000000000,
+     "px": "1.10010",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-7b36bedb9af7dcc2-009",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067680000000000,
+     "px": "1.10080",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-a2ceb9f0ecc884be-038",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:01:02",
+    "px": "1.10010",
+    "seen_by_strategy": true
+   },
+   "codex_reported": {
+    "time": "00:01:02",
+    "px": "1.10010"
+   },
+   "wall_s": 0.088
+  },
+  {
+   "variation": 3,
+   "mechanism": "gate",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067380000000000,
+     "px": "1.10030",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-51d365c91de7ac77-017",
+     "seen_by_strategy": true
+    },
+    {
+     "coid": "O-20240101-000700-001-000-2",
+     "sym": "6E",
+     "side": "SELL",
+     "ts": 1704067740000000000,
+     "px": "1.10090",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-77e0e82e07e3ca08-042",
+     "seen_by_strategy": true
+    }
+   ],
+   "first_buy": {
+    "time": "00:03:00",
+    "px": "1.10030",
+    "seen_by_strategy": true
+   },
+   "held_at_end": [],
+   "codex_reported": {
+    "time": "00:01:02",
+    "px": "1.10010"
+   },
+   "wall_s": 0.085
+  },
+  {
+   "variation": 4,
+   "mechanism": "baseline",
+   "fills": [
+    {
+     "coid": "O-20240101-000100-001-000-1",
+     "sym": "6E",
+     "side": "BUY",
+     "ts": 1704067261000000000,
+     "px": "1.10010",
+     "qty": "1",
+     "commission": "2.50 USD",
+     "trade_id": "T-0b7dbcb579429e61-009",
+     "seen_by_strategy": false
+    }
+   ],
+   "first_buy": {
+    "time": "00:01:01",
+    "px": "1.10010",
+    "seen_by_strategy": false
+   },
+   "codex_reported": {
+    "time": "00:01:01",
+    "px": "1.10010"
+   },
+   "wall_s": 0.11
+  },
+  {
+   "variation": 4,
+   "mechanism": "gate",
+   "fills": [],
+   "first_buy": null,
+   "held_at_end": [
+    "O-20240101-000100-001-000-1"
+   ],
+   "codex_reported": {
+    "time": "00:01:01",
+    "px": "1.10010"
+   },
+   "wall_s": 0.084
+  }
+ ],
+ "ledger": [
+  {
+   "case": "fifo",
+   "context": "backtest",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "20.00",
+     "fees": "0.00",
+     "cash": "100000.00",
+     "open_lots": {
+      "CLPR": [
+       [
+        "1",
+        "20.00"
+       ]
+      ]
+     },
+     "position_qty": {
+      "CLPR": "1"
+     }
+    },
+    "engine_cash": "100000.00 USD",
+    "engine_positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "15.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "engine_realized": [
+     "15.00"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "10.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-2",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "20.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000002-0A-000-3",
+      "sym": "CLPR",
+      "side": "SELL",
+      "ts": 1767225603000000000,
+      "px": "30.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "bid",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000000-0A-000-1",
+      "watermark": 1767225600000000000
+     },
+     {
+      "release": "O-20260101-000000-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1767225601000000000,
+      "watermark": 1767225600000000000
+     },
+     {
+      "hold": "O-20260101-000001-0A-000-2",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-2",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     },
+     {
+      "hold": "O-20260101-000002-0A-000-3",
+      "watermark": 1767225602000000000
+     },
+     {
+      "release": "O-20260101-000002-0A-000-3",
+      "on_idx": 3,
+      "on_ts": 1767225603000000000,
+      "watermark": 1767225602000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "100000.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "15.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "ledger",
+    "case": "fifo",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6dfb27f4e6bc41028b80af68a70c9b28.scope",
+     "memory.peak": 44470272,
+     "memory.current": 44253184
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fifo",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "2716dd74030268cb3d265aa2072c48cd31529ccc8342ce89b7c074cfe8158c9d"
+    }
+   }
+  },
+  {
+   "case": "fifo",
+   "context": "sandbox",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "20.00",
+     "fees": "0.00",
+     "cash": "100000.00",
+     "open_lots": {
+      "CLPR": [
+       [
+        "1",
+        "20.00"
+       ]
+      ]
+     },
+     "position_qty": {
+      "CLPR": "1"
+     }
+    },
+    "engine_cash": "100000.00 USD",
+    "engine_positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "15.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "engine_realized": [
+     "15.00"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223716-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646237074969087,
+      "px": "10.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-4e2f5ed8401c9261-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 349969,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223717-0A-000-2",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646237324511296,
+      "px": "20.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-8e0d9cd529242efb-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 287799,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223717-0A-000-3",
+      "sym": "CLPR",
+      "side": "SELL",
+      "ts": 1795646237575197182,
+      "px": "30.00",
+      "qty": "1",
+      "commission": "0.00 USD",
+      "trade_id": "T-4dbd1eab13a860d0-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "bid",
+       "lag_ns": 260570,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223716-0A-000-1",
+      "watermark": 1795646236823930213
+     },
+     {
+      "release": "O-20261125-223716-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1795646237074619118,
+      "watermark": 1795646236823930213
+     },
+     {
+      "hold": "O-20261125-223717-0A-000-2",
+      "watermark": 1795646237074619118
+     },
+     {
+      "release": "O-20261125-223717-0A-000-2",
+      "on_idx": 2,
+      "on_ts": 1795646237324223497,
+      "watermark": 1795646237074619118
+     },
+     {
+      "hold": "O-20261125-223717-0A-000-3",
+      "watermark": 1795646237324223497
+     },
+     {
+      "release": "O-20261125-223717-0A-000-3",
+      "on_idx": 3,
+      "on_ts": 1795646237574936612,
+      "watermark": 1795646237324223497
+     }
+    ],
+    "held_at_end": [],
+    "cash": "100000.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "1",
+      "realized_pnl": "15.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "ledger",
+    "case": "fifo",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.506,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r60261111885e4d7ba32feeb75d2ab5a8.scope",
+     "memory.peak": 48459776,
+     "memory.current": 47882240
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fifo",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 5,
+     "sha256": "2716dd74030268cb3d265aa2072c48cd31529ccc8342ce89b7c074cfe8158c9d"
+    }
+   }
+  },
+  {
+   "case": "fee_min_across_partials",
+   "context": "backtest",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "1.00",
+     "cash": "98346.00",
+     "open_lots": {
+      "CLPR": [
+       [
+        "50",
+        "11.02"
+       ],
+       [
+        "60",
+        "11.02"
+       ],
+       [
+        "40",
+        "11.02"
+       ]
+      ]
+     },
+     "position_qty": {
+      "CLPR": "150"
+     }
+    },
+    "engine_cash": "98346.00 USD",
+    "engine_positions": [
+     {
+      "sym": "CLPR",
+      "qty": "150",
+      "realized_pnl": "-1.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "commissions": [
+     "1.00",
+     "0.00",
+     "0.00"
+    ],
+    "independent_recomputation": [
+     "1.00",
+     "0.00",
+     "0.00"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "11.02",
+      "qty": "50",
+      "commission": "1.00 USD",
+      "trade_id": "T-c737cb6ce619dd23-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "11.02",
+      "qty": "60",
+      "commission": "0.00 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-002",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000001-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1767225604000000000,
+      "px": "11.02",
+      "qty": "40",
+      "commission": "0.00 USD",
+      "trade_id": "T-f18f06ad4a36f456-003",
+      "attribution": {
+       "idx": 4,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000001-0A-000-1",
+      "watermark": 1767225601000000000
+     },
+     {
+      "release": "O-20260101-000001-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1767225602000000000,
+      "watermark": 1767225601000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98346.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "150",
+      "realized_pnl": "-1.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "ledger",
+    "case": "fee_min_across_partials",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc942d2560ec54075b02ae0420e780c16.scope",
+     "memory.peak": 44589056,
+     "memory.current": 44589056
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fee_min_across_partials",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "e49eb6dae172cf6031a4f4ab11000b54596eaa366f581338517f3d19262732b5"
+    }
+   }
+  },
+  {
+   "case": "fee_min_across_partials",
+   "context": "sandbox",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "1.00",
+     "cash": "98346.00",
+     "open_lots": {
+      "CLPR": [
+       [
+        "50",
+        "11.02"
+       ],
+       [
+        "60",
+        "11.02"
+       ],
+       [
+        "40",
+        "11.02"
+       ]
+      ]
+     },
+     "position_qty": {
+      "CLPR": "150"
+     }
+    },
+    "engine_cash": "98346.00 USD",
+    "engine_positions": [
+     {
+      "sym": "CLPR",
+      "qty": "150",
+      "realized_pnl": "-1.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "commissions": [
+     "1.00",
+     "0.00",
+     "0.00"
+    ],
+    "independent_recomputation": [
+     "1.00",
+     "0.00",
+     "0.00"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223731-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646252004180484,
+      "px": "11.02",
+      "qty": "50",
+      "commission": "1.00 USD",
+      "trade_id": "T-9516205ee82bcb65-001",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 380169,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223731-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646252254818819,
+      "px": "11.02",
+      "qty": "60",
+      "commission": "0.00 USD",
+      "trade_id": "T-647d670f4189227f-002",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 218489,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223731-0A-000-1",
+      "sym": "CLPR",
+      "side": "BUY",
+      "ts": 1795646252504459588,
+      "px": "11.02",
+      "qty": "40",
+      "commission": "0.00 USD",
+      "trade_id": "T-6c471dd741d3227c-003",
+      "attribution": {
+       "idx": 4,
+       "leg": "ask",
+       "lag_ns": 251259,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223731-0A-000-1",
+      "watermark": 1795646251754206737
+     },
+     {
+      "release": "O-20261125-223731-0A-000-1",
+      "on_idx": 2,
+      "on_ts": 1795646252003800315,
+      "watermark": 1795646251754206737
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98346.00 USD",
+    "positions": [
+     {
+      "sym": "CLPR",
+      "qty": "150",
+      "realized_pnl": "-1.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "ledger",
+    "case": "fee_min_across_partials",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.806,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rfe8caafa74c14e28a322e56303b39a2c.scope",
+     "memory.peak": 48246784,
+     "memory.current": 48156672
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fee_min_across_partials",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "e49eb6dae172cf6031a4f4ab11000b54596eaa366f581338517f3d19262732b5"
+    }
+   }
+  },
+  {
+   "case": "fee_cap_across_partials",
+   "context": "backtest",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "40.00",
+     "cash": "95960.00",
+     "open_lots": {
+      "PNNY": [
+       [
+        "2500",
+        "0.40"
+       ],
+       [
+        "2600",
+        "0.40"
+       ],
+       [
+        "2700",
+        "0.40"
+       ],
+       [
+        "2200",
+        "0.40"
+       ]
+      ]
+     },
+     "position_qty": {
+      "PNNY": "10000"
+     }
+    },
+    "engine_cash": "95960.00 USD",
+    "engine_positions": [
+     {
+      "sym": "PNNY",
+      "qty": "10000",
+      "realized_pnl": "-40.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "commissions": [
+     "10.00",
+     "10.40",
+     "10.80",
+     "8.80"
+    ],
+    "independent_recomputation": [
+     "10.00",
+     "10.40",
+     "10.80",
+     "8.80"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "0.40",
+      "qty": "2500",
+      "commission": "10.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1767225602000000000,
+      "px": "0.40",
+      "qty": "2600",
+      "commission": "10.40 USD",
+      "trade_id": "T-c737cb6ce619dd23-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1767225603000000000,
+      "px": "0.40",
+      "qty": "2700",
+      "commission": "10.80 USD",
+      "trade_id": "T-9d4b8ecc2c1f930f-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1767225604000000000,
+      "px": "0.40",
+      "qty": "2200",
+      "commission": "8.80 USD",
+      "trade_id": "T-f18f06ad4a36f456-004",
+      "attribution": {
+       "idx": 4,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000000-0A-000-1",
+      "watermark": 1767225600000000000
+     },
+     {
+      "release": "O-20260101-000000-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1767225601000000000,
+      "watermark": 1767225600000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "95960.00 USD",
+    "positions": [
+     {
+      "sym": "PNNY",
+      "qty": "10000",
+      "realized_pnl": "-40.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "ledger",
+    "case": "fee_cap_across_partials",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r6c509536e1c0420d807037267119d282.scope",
+     "memory.peak": 46481408,
+     "memory.current": 46481408
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fee_cap_across_partials",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "d988197b289e7be37c949842ce23095657e5d46fcb63518183d1d593ea0cdae1"
+    }
+   }
+  },
+  {
+   "case": "fee_cap_across_partials",
+   "context": "sandbox",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "40.00",
+     "cash": "95960.00",
+     "open_lots": {
+      "PNNY": [
+       [
+        "2500",
+        "0.40"
+       ],
+       [
+        "2600",
+        "0.40"
+       ],
+       [
+        "2700",
+        "0.40"
+       ],
+       [
+        "2200",
+        "0.40"
+       ]
+      ]
+     },
+     "position_qty": {
+      "PNNY": "10000"
+     }
+    },
+    "engine_cash": "95960.00 USD",
+    "engine_positions": [
+     {
+      "sym": "PNNY",
+      "qty": "10000",
+      "realized_pnl": "-40.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "commissions": [
+     "10.00",
+     "10.40",
+     "10.80",
+     "8.80"
+    ],
+    "independent_recomputation": [
+     "10.00",
+     "10.40",
+     "10.80",
+     "8.80"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223746-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1795646266734850140,
+      "px": "0.40",
+      "qty": "2500",
+      "commission": "10.00 USD",
+      "trade_id": "T-855391ea2bcae5f9-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 375939,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223746-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1795646266984336259,
+      "px": "0.40",
+      "qty": "2600",
+      "commission": "10.40 USD",
+      "trade_id": "T-571e588276426fd5-002",
+      "attribution": {
+       "idx": 2,
+       "leg": "ask",
+       "lag_ns": 267709,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223746-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1795646267234121547,
+      "px": "0.40",
+      "qty": "2700",
+      "commission": "10.80 USD",
+      "trade_id": "T-9ad614fbda27a9a7-003",
+      "attribution": {
+       "idx": 3,
+       "leg": "ask",
+       "lag_ns": 217799,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     },
+     {
+      "coid": "O-20261125-223746-0A-000-1",
+      "sym": "PNNY",
+      "side": "BUY",
+      "ts": 1795646267484710163,
+      "px": "0.40",
+      "qty": "2200",
+      "commission": "8.80 USD",
+      "trade_id": "T-4ac53b0ed4153a88-004",
+      "attribution": {
+       "idx": 4,
+       "leg": "ask",
+       "lag_ns": 224530,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223746-0A-000-1",
+      "watermark": 1795646266483620747
+     },
+     {
+      "release": "O-20261125-223746-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1795646266734474201,
+      "watermark": 1795646266483620747
+     }
+    ],
+    "held_at_end": [],
+    "cash": "95960.00 USD",
+    "positions": [
+     {
+      "sym": "PNNY",
+      "qty": "10000",
+      "realized_pnl": "-40.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "ledger",
+    "case": "fee_cap_across_partials",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.806,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r0a0ad23161f443338bb8ea24c3e1ee46.scope",
+     "memory.peak": 48148480,
+     "memory.current": 48148480
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "fee_cap_across_partials",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 6,
+     "sha256": "d988197b289e7be37c949842ce23095657e5d46fcb63518183d1d593ea0cdae1"
+    }
+   }
+  },
+  {
+   "case": "lot_tick_refusal",
+   "context": "backtest",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "0.00",
+     "cash": "98998.00",
+     "open_lots": {
+      "LOTS": [
+       [
+        "100",
+        "10.02"
+       ]
+      ]
+     },
+     "position_qty": {
+      "LOTS": "100"
+     }
+    },
+    "engine_cash": "98998.00 USD",
+    "engine_positions": [
+     {
+      "sym": "LOTS",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "refusals": [
+     "lot: quantity 150 not a positive multiple of lot size 100",
+     "tick: price 11.025 not a multiple of increment 0.01"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20260101-000000-0A-000-1",
+      "sym": "LOTS",
+      "side": "BUY",
+      "ts": 1767225601000000000,
+      "px": "10.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-47f52b57608c6982-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 0,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [
+     {
+      "action": {
+       "sym": "LOTS",
+       "side": "BUY",
+       "qty": 150
+      },
+      "reason": "lot: quantity 150 not a positive multiple of lot size 100",
+      "clock": 1767225600000000000
+     },
+     {
+      "action": {
+       "sym": "LOTS",
+       "side": "BUY",
+       "qty": 100,
+       "price": "11.025"
+      },
+      "reason": "tick: price 11.025 not a multiple of increment 0.01",
+      "clock": 1767225600000000000
+     }
+    ],
+    "gate_log": [
+     {
+      "hold": "O-20260101-000000-0A-000-1",
+      "watermark": 1767225600000000000
+     },
+     {
+      "release": "O-20260101-000000-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1767225601000000000,
+      "watermark": 1767225600000000000
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98998.00 USD",
+    "positions": [
+     {
+      "sym": "LOTS",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "t0_ns": 1767225600000000000,
+    "error": null,
+    "suite": "ledger",
+    "case": "lot_tick_refusal",
+    "context": "backtest",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 0.002,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-rc9e46d2022fd4f00accceba70a51c18b.scope",
+     "memory.peak": 44326912,
+     "memory.current": 44326912
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "lot_tick_refusal",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "c00a34129b9afd240e51dc36105438c8216f5081711019f1e465aea7652d45fc"
+    }
+   }
+  },
+  {
+   "case": "lot_tick_refusal",
+   "context": "sandbox",
+   "verdict": "PASS",
+   "why": "",
+   "detail": {
+    "ledger": {
+     "fifo_realized_gross": "0",
+     "fees": "0.00",
+     "cash": "98998.00",
+     "open_lots": {
+      "LOTS": [
+       [
+        "100",
+        "10.02"
+       ]
+      ]
+     },
+     "position_qty": {
+      "LOTS": "100"
+     }
+    },
+    "engine_cash": "98998.00 USD",
+    "engine_positions": [
+     {
+      "sym": "LOTS",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "refusals": [
+     "lot: quantity 150 not a positive multiple of lot size 100",
+     "tick: price 11.025 not a multiple of increment 0.01"
+    ]
+   },
+   "result": {
+    "fills": [
+     {
+      "coid": "O-20261125-223801-0A-000-1",
+      "sym": "LOTS",
+      "side": "BUY",
+      "ts": 1795646281716324310,
+      "px": "10.02",
+      "qty": "100",
+      "commission": "0.00 USD",
+      "trade_id": "T-f9447deeb99dc91d-001",
+      "attribution": {
+       "idx": 1,
+       "leg": "ask",
+       "lag_ns": 367909,
+       "origin": "feed_event"
+      },
+      "seen_by_strategy": true
+     }
+    ],
+    "refusals": [
+     {
+      "action": {
+       "sym": "LOTS",
+       "side": "BUY",
+       "qty": 150
+      },
+      "reason": "lot: quantity 150 not a positive multiple of lot size 100",
+      "clock": 1795646281465646705
+     },
+     {
+      "action": {
+       "sym": "LOTS",
+       "side": "BUY",
+       "qty": 100,
+       "price": "11.025"
+      },
+      "reason": "tick: price 11.025 not a multiple of increment 0.01",
+      "clock": 1795646281465653875
+     }
+    ],
+    "gate_log": [
+     {
+      "hold": "O-20261125-223801-0A-000-1",
+      "watermark": 1795646281465277276
+     },
+     {
+      "release": "O-20261125-223801-0A-000-1",
+      "on_idx": 1,
+      "on_ts": 1795646281715956401,
+      "watermark": 1795646281465277276
+     }
+    ],
+    "held_at_end": [],
+    "cash": "98998.00 USD",
+    "positions": [
+     {
+      "sym": "LOTS",
+      "qty": "100",
+      "realized_pnl": "0.00 USD",
+      "side": "LONG"
+     }
+    ],
+    "replay_errors": [],
+    "replay_completed": true,
+    "error": null,
+    "suite": "ledger",
+    "case": "lot_tick_refusal",
+    "context": "sandbox",
+    "mechanism": "gate",
+    "liquidity_consumption": true,
+    "wall_s": 14.005,
+    "nautilus_version": "2.0.0rc9",
+    "python": "3.13.14",
+    "memory": {
+     "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/run-r5f5dc5066dc4494ea2f8685f76e54f0b.scope",
+     "memory.peak": 48193536,
+     "memory.current": 47939584
+    },
+    "fixture_provenance": {
+     "generator": {
+      "name": "clipper-spike-00a-fixtures",
+      "version": "1"
+     },
+     "fixture": "lot_tick_refusal",
+     "seed": 0,
+     "corporate_actions": "declared none (synthetic instruments)",
+     "rows": 3,
+     "sha256": "c00a34129b9afd240e51dc36105438c8216f5081711019f1e465aea7652d45fc"
+    }
+   }
+  }
+ ],
+ "finished": "2026-11-25T22:38:13Z"
+}

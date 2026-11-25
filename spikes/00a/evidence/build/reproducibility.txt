@@ -1,0 +1,6 @@
+# Build reproducibility (two builds from tag v2.0.0rc9 + patch on the reference host)
+build 1 wheel: 0d6edf14ad25cc438bd17376c46c318aa4ba5bc7222ef0f29f6667f9bdedb073  (fresh target dir, 736 s)
+build 2 wheel: 7f13884b19814f2c1876726a080cab8f05c2369569dfd6dadba5c3f8c0b1c0d5  (reused target dir, 636 s)
+native _libnautilus .so, both builds: ef4a81d0cbc70f717e377d816acd5b12deb653991d5967b16d3cee2ae84d932f (identical)
+wheel manifests: identical
+only differences: dist-info/sboms/nautilus-pyo3.cyclonedx.json serialNumber + timestamp, and RECORD (hash of that SBOM)

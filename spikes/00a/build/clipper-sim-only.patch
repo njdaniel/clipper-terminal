@@ -1,0 +1,332 @@
+diff --git a/crates/pyo3/Cargo.toml b/crates/pyo3/Cargo.toml
+index 19c7e45..c0f60f9 100644
+--- a/crates/pyo3/Cargo.toml
++++ b/crates/pyo3/Cargo.toml
+@@ -22,28 +22,49 @@ crate-type = ["rlib", "cdylib"]
+ 
+ [features]
+ default = ["adapters"]
++# Clipper patch: per-adapter features; `adapters` keeps upstream meaning (all of them).
+ adapters = [
+-  "dep:nautilus-architect-ax",
+-  "dep:nautilus-betfair",
+-  "dep:nautilus-binance",
+-  "dep:nautilus-bybit",
+-  "dep:nautilus-coinapi",
+-  "dep:nautilus-coinbase",
+-  "dep:nautilus-databento",
+-  "dep:nautilus-deribit",
+-  "dep:nautilus-derive",
+-  "dep:nautilus-dydx",
+-  "dep:nautilus-finfeed",
+-  "dep:nautilus-hyperliquid",
+-  "dep:nautilus-interactive-brokers",
+-  "dep:nautilus-kalshi",
+-  "dep:nautilus-kraken",
+-  "dep:nautilus-lighter",
+-  "dep:nautilus-okx",
+-  "dep:nautilus-polymarket",
+-  "dep:nautilus-sandbox",
+-  "dep:nautilus-tardis",
++  "adapter-architect-ax",
++  "adapter-betfair",
++  "adapter-binance",
++  "adapter-bybit",
++  "adapter-coinapi",
++  "adapter-coinbase",
++  "adapter-databento",
++  "adapter-deribit",
++  "adapter-derive",
++  "adapter-dydx",
++  "adapter-finfeed",
++  "adapter-hyperliquid",
++  "adapter-interactive-brokers",
++  "adapter-kalshi",
++  "adapter-kraken",
++  "adapter-lighter",
++  "adapter-okx",
++  "adapter-polymarket",
++  "adapter-sandbox",
++  "adapter-tardis",
+ ]
++adapter-architect-ax = ["dep:nautilus-architect-ax"]
++adapter-betfair = ["dep:nautilus-betfair"]
++adapter-binance = ["dep:nautilus-binance"]
++adapter-bybit = ["dep:nautilus-bybit"]
++adapter-coinapi = ["dep:nautilus-coinapi"]
++adapter-coinbase = ["dep:nautilus-coinbase"]
++adapter-databento = ["dep:nautilus-databento"]
++adapter-deribit = ["dep:nautilus-deribit"]
++adapter-derive = ["dep:nautilus-derive"]
++adapter-dydx = ["dep:nautilus-dydx"]
++adapter-finfeed = ["dep:nautilus-finfeed"]
++adapter-hyperliquid = ["dep:nautilus-hyperliquid"]
++adapter-interactive-brokers = ["dep:nautilus-interactive-brokers"]
++adapter-kalshi = ["dep:nautilus-kalshi"]
++adapter-kraken = ["dep:nautilus-kraken"]
++adapter-lighter = ["dep:nautilus-lighter"]
++adapter-okx = ["dep:nautilus-okx"]
++adapter-polymarket = ["dep:nautilus-polymarket"]
++adapter-sandbox = ["dep:nautilus-sandbox"]
++adapter-tardis = ["dep:nautilus-tardis"]
+ arrow = [
+   "nautilus-betfair?/arrow",
+   "nautilus-binance?/arrow",
+diff --git a/crates/pyo3/src/lib.rs b/crates/pyo3/src/lib.rs
+index 35ed48e..83fde7a 100644
+--- a/crates/pyo3/src/lib.rs
++++ b/crates/pyo3/src/lib.rs
+@@ -206,7 +206,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+     // Adapters
+     ////////////////////////////////////////////////////////////////////////////////
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-architect-ax")]
+     {
+         let n = "architect_ax";
+         let submodule = pyo3::wrap_pymodule!(nautilus_architect_ax::python::architect_ax);
+@@ -214,7 +214,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-betfair")]
+     {
+         let n = "betfair";
+         let submodule = pyo3::wrap_pymodule!(nautilus_betfair::python::betfair);
+@@ -222,7 +222,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-binance")]
+     {
+         let n = "binance";
+         let submodule = pyo3::wrap_pymodule!(nautilus_binance::python::binance);
+@@ -230,7 +230,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-bybit")]
+     {
+         let n = "bybit";
+         let submodule = pyo3::wrap_pymodule!(nautilus_bybit::python::bybit);
+@@ -238,7 +238,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-coinapi")]
+     {
+         let n = "coinapi";
+         let submodule = pyo3::wrap_pymodule!(nautilus_coinapi::python::coinapi);
+@@ -246,7 +246,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-coinbase")]
+     {
+         let n = "coinbase";
+         let submodule = pyo3::wrap_pymodule!(nautilus_coinbase::python::coinbase);
+@@ -254,7 +254,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-databento")]
+     {
+         let n = "databento";
+         let submodule = pyo3::wrap_pymodule!(nautilus_databento::python::databento);
+@@ -262,7 +262,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-deribit")]
+     {
+         let n = "deribit";
+         let submodule = pyo3::wrap_pymodule!(nautilus_deribit::python::deribit);
+@@ -270,7 +270,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-derive")]
+     {
+         let n = "derive";
+         let submodule = pyo3::wrap_pymodule!(nautilus_derive::python::derive);
+@@ -278,7 +278,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-dydx")]
+     {
+         let n = "dydx";
+         let submodule = pyo3::wrap_pymodule!(nautilus_dydx::python::dydx);
+@@ -286,7 +286,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-finfeed")]
+     {
+         let n = "finfeed";
+         let submodule = pyo3::wrap_pymodule!(nautilus_finfeed::python::finfeed);
+@@ -294,7 +294,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-hyperliquid")]
+     {
+         let n = "hyperliquid";
+         let submodule = pyo3::wrap_pymodule!(nautilus_hyperliquid::python::hyperliquid);
+@@ -302,7 +302,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-kalshi")]
+     {
+         let n = "kalshi";
+         let submodule = pyo3::wrap_pymodule!(nautilus_kalshi::python::kalshi);
+@@ -310,7 +310,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-kraken")]
+     {
+         let n = "kraken";
+         let submodule = pyo3::wrap_pymodule!(nautilus_kraken::python::kraken);
+@@ -318,7 +318,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-lighter")]
+     {
+         let n = "lighter";
+         let submodule = pyo3::wrap_pymodule!(nautilus_lighter::python::lighter);
+@@ -326,7 +326,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-interactive-brokers")]
+     {
+         let n = "interactive_brokers";
+         let submodule =
+@@ -335,7 +335,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-okx")]
+     {
+         let n = "okx";
+         let submodule = pyo3::wrap_pymodule!(nautilus_okx::python::okx);
+@@ -343,7 +343,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-polymarket")]
+     {
+         let n = "polymarket";
+         let submodule = pyo3::wrap_pymodule!(nautilus_polymarket::python::polymarket);
+@@ -351,7 +351,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-sandbox")]
+     {
+         let n = "sandbox";
+         let submodule = pyo3::wrap_pymodule!(nautilus_sandbox::python::sandbox);
+@@ -359,7 +359,7 @@ fn _libnautilus(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+         sys_modules.set_item(format!("{module_name}.{n}"), m.getattr(n)?)?;
+     }
+ 
+-    #[cfg(feature = "adapters")]
++    #[cfg(feature = "adapter-tardis")]
+     {
+         let n = "tardis";
+         let submodule = pyo3::wrap_pymodule!(nautilus_tardis::python::tardis);
+diff --git a/python/nautilus_trader/adapters/__init__.pyi b/python/nautilus_trader/adapters/__init__.pyi
+index 696db47..59a1c64 100644
+--- a/python/nautilus_trader/adapters/__init__.pyi
++++ b/python/nautilus_trader/adapters/__init__.pyi
+@@ -1,48 +1,10 @@
+ # This file is automatically generated by pyo3_stub_gen
+ # ruff: noqa: E501
+ 
+-from . import architect_ax
+-from . import betfair
+-from . import binance
+-from . import blockchain
+-from . import bybit
+-from . import coinapi
+-from . import coinbase
+ from . import databento
+-from . import deribit
+-from . import derive
+-from . import dydx
+-from . import finfeed
+-from . import hyperliquid
+-from . import interactive_brokers
+-from . import kalshi
+-from . import kraken
+-from . import lighter
+-from . import okx
+-from . import polymarket
+ from . import sandbox
+-from . import tardis
+ 
+ __all__ = [
+-    "architect_ax",
+-    "betfair",
+-    "binance",
+-    "blockchain",
+-    "bybit",
+-    "coinapi",
+-    "coinbase",
+     "databento",
+-    "deribit",
+-    "derive",
+-    "dydx",
+-    "finfeed",
+-    "hyperliquid",
+-    "interactive_brokers",
+-    "kalshi",
+-    "kraken",
+-    "lighter",
+-    "okx",
+-    "polymarket",
+     "sandbox",
+-    "tardis",
+ ]
+diff --git a/python/pyproject.toml b/python/pyproject.toml
+index 0331e46..5c34739 100644
+--- a/python/pyproject.toml
++++ b/python/pyproject.toml
+@@ -52,12 +52,12 @@ features = [
+   "arrow",
+   "high-precision",
+   "mimalloc",
+-  "redis",
+-  "postgres",
+-  "defi",
+-  "hypersync",
+   "tracing-bridge",
++  "adapter-sandbox",
++  "adapter-databento",
+ ]
++# Clipper patch: no default `adapters` umbrella; no defi/hypersync/redis/postgres.
++no-default-features = true
+ strip = false
+ 
+ include = ["**/*.pyi"]
