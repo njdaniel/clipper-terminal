@@ -154,6 +154,7 @@ Recorded from the machine on 2026-11-25:
 | OS | Pop!_OS 24.04 LTS, kernel 7.0.11, x86-64 |
 | glibc | 2.39 (meets the `manylinux_2_34` floor of the Nautilus v2 wheels) |
 | CPU / RAM | AMD Ryzen 7 7700X (8 cores, 16 threads), 61 GiB |
+| GPU | NVIDIA RTX 4090, proprietary driver 580.159.03 (added 2026-11-25 for the desktop review) |
 | Storage | Local NVMe SSDs |
 | Desktop | COSMIC. The session reports Wayland, with XWayland on `DISPLAY=:1`; the maintainer runs applications under X11. |
 | Init | systemd user session available, so `systemd-run --user` workers are possible |
