@@ -5,11 +5,28 @@ Systems LLC.
 
 ## Licensing of contributions
 
-Clipper Terminal is licensed under the GNU AGPLv3 or later. Contributions use
-an inbound = outbound model: by submitting a contribution, you agree to license
-it under the same AGPLv3-or-later terms.
+Clipper Terminal is licensed under the GNU AGPLv3 or later. Whalesback
+Systems LLC intends to keep the ability to offer Clipper Terminal under other
+license terms as well (dual licensing).
 
-Sign off every commit to certify the
+### Contributor License Agreement (required, pending adoption)
+
+Every external contribution will need a signed Contributor License Agreement
+(CLA) before it can be accepted. The agreement is going through legal review
+and has not been adopted yet.
+
+**Until the CLA is adopted, no external contributions will be merged.** You are
+welcome to open issues and discussions. Please wait for the CLA before opening
+pull requests that contain code or documentation you want merged. This file
+will link to the agreement and explain how to sign it once it is available.
+
+The CLA grants rights to Whalesback Systems LLC only. The public release of
+Clipper Terminal stays under the AGPLv3 or later, and third-party code stays
+under its own licenses.
+
+### Developer Certificate of Origin
+
+Also sign off every commit to certify the
 [Developer Certificate of Origin](https://developercertificate.org/):
 
 ```
