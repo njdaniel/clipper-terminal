@@ -257,3 +257,90 @@ AppImage and Flatpak are deferred.
 **Decision:** Codex performs the independent review of the reconciled
 documents. Claude wrote them, so Claude's reviews are not independent of that
 text. The review is written to `docs/architecture/codex-review.md`.
+
+## Decisions on the Codex review questions (2026-11-25)
+
+These answer pending items P1–P8 in the ADR file, and settle the open
+reference to an external orchestration product.
+
+### D13 (P1). D1 stands: the paper-only artifact gate is not relaxed
+
+**Decision:** D1 is not amended. Paper trading comes first, so alpha ships a
+**simulation-only NautilusTrader build**: built from the exact upstream tag,
+with only the sandbox and Databento adapters, and with no execution factory
+that can reach a real account. If Phase 0 shows the restricted build is not
+feasible, the evidence comes back to the maintainer. Relaxing D1 is not a
+fallback.
+
+### D14 (P2). Execution timing and fixtures
+
+**Decision:**
+- `after_watermark` is the default: an order fills on the first eligible
+  matching event after the decision's data watermark.
+- `signal_close` is available only as an explicitly named, labelled option.
+- The fee schedule is a configurable, versioned broker specification. Fixture
+  values come from a published broker schedule.
+- Cost basis is FIFO.
+- Splits fail closed.
+
+### D15 (P3). MCP can halt, not cancel
+
+**Decision:** the MCP `paper:halt` grant only latches off new exposure and
+stops the strategy. Cancel, flatten and re-enable are human-only. The human
+grants and revokes `paper:halt` through the CLI.
+
+### D16 (P4). Logout ends local paper sessions; upgrades wait
+
+**Decision (alpha):**
+- Logging out of the desktop session **ends the local paper session**.
+- The end procedure **cancels open orders** and **preserves the history**: the
+  journal is sealed with reason `logout`, stays readable, and can be exported.
+- Package upgrades wait until all sessions have stopped. The service does not
+  switch versions while a session is active.
+
+**Later:** Clipper Cloud may run sessions independently of a desktop login.
+That is out of scope for local alpha.
+
+### D17 (P5). XWayland first; escalate on failure
+
+**Decision:** XWayland is the priority display mode. If it fails the Phase 0
+targets, **escalate to the maintainer** before trying alternatives.
+
+**Consequence:** this narrows D10. Evaluating Tauri 3 with CEF, or relying on
+native Wayland, happens only at the maintainer's direction after escalation,
+not automatically.
+
+### D18 (P6). Durability states and terminal records
+
+**Decision:** approved as proposed.
+- The UI shows three states, *received*, *venue response* and *filled*, and
+  publishes each one only after its commit.
+- On a clean end, the worker writes the terminal record. On interruption, the
+  service writes it through fenced takeover.
+- Either way there is one sealed ledger.
+
+### D19 (P7). Market-data retention
+
+**Decision:** approved as proposed.
+- The journal always records feed identity, sequence and timestamps.
+- It stores the driving market data only where the provider licence allows,
+  and flags it (`driving_data_retained=false`) otherwise.
+- Exports follow the same rule.
+
+### D20 (P8). Licensing workflow: approved with conditions
+
+**Decision:**
+- NautilusTrader stays **replaceable** by the recipient, through the tested
+  engine-override path.
+- Source is published **only as required by the applicable licences**. Legal
+  review determines what each release must provide. Expected candidates are
+  the source of the modified LGPL engine build and Clipper's AGPL corresponding
+  source for conveyed builds.
+- **Every release requires maintainer and legal review** before it ships.
+
+### D21. No named orchestration product in alpha
+
+**Decision:** the orchestration product that earlier drafts named is out of
+alpha scope, and alpha documents do not name it. They use the generic term
+**"external AI orchestration tools"**: Clipper works with such tools only
+through its public APIs and MCP, and never depends on one.

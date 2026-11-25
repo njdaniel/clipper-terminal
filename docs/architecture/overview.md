@@ -8,8 +8,8 @@
   [second Claude review](claude-review-2.md).
 - All maintainer decisions D1–D12 in [`maintainer-decisions.md`](maintainer-decisions.md)
   apply.
-- Items marked **(pending P*n*)** are proposed defaults that await a maintainer
-  decision; they are listed in the [ADR file](../adr/0001-alpha-architecture-decisions.md#pending-maintainer-decisions).
+- Revision 3.1 applies the maintainer's answers to P1–P8 (D13–D21). Nothing
+  is pending in this document.
 
 **Product:** Whalesback Systems LLC. **License:** AGPL-3.0-or-later (D3).
 
@@ -19,9 +19,8 @@ Clipper is a desktop-first, local-first, open-source quantitative trading
 workstation. AI agents control it through MCP (D8). It offers professional
 charting, Python strategy development, reproducible NautilusTrader backtests
 and paper trading. Humans and AI agents use the same application services.
-Clipper is independent of Leviathan: integration goes through public APIs and
-MCP and is never a required dependency. Leviathan is not defined in these
-documents; the maintainer should define the term or remove it.
+Clipper works with external AI orchestration tools only through its public
+APIs and MCP, and never depends on one (D21).
 
 **Platforms:** Linux desktop first, with Pop!_OS 24.04 LTS on x86-64 as the
 reference (§13). Windows desktop comes later; alpha must not rule it out (§11).
@@ -64,10 +63,11 @@ macOS is not planned.
 4. *(Alpha-P)* The user starts a paper session and approves an order or a
    bounded deployment. They watch simulated fills, then stop or cancel safely.
    Closing windows or disconnecting the agent does not stop the session.
-5. *(Alpha-P)* A worker crash ends the session as *interrupted*. So do logout,
-   reboot and package upgrade, unless the session was drained first (§4,
-   pending P4). Exactly one terminal record is written, and the journal stays
-   sealed and readable. A new session starts only when the user asks for one.
+5. *(Alpha-P)* Logging out ends the session: open orders are cancelled and
+   the history is preserved (D16). A worker crash or reboot ends it as
+   *interrupted*. Upgrades wait until every session has stopped. Exactly one
+   terminal record is written, and the journal stays sealed and readable. A
+   new session starts only when the user asks for one.
 
 ## 2. Runtime and language ownership
 
@@ -232,15 +232,19 @@ docs/architecture/  docs/adr/
     keep running. The restarted service adopts them through their launch
     intents: it checks that each lease is held and verifies the worker's
     generation over its socket.
-  - *Package upgrade:* each version installs into its own prefix (see
-    Packaging), so running workers keep their own files. The shell will not
-    restart the service onto a new version while paper sessions are active.
-    It asks the user to drain them first. Mixed-version workers are never
+  - *Package upgrade (D16):* each version installs into its own prefix (see
+    Packaging), so running workers keep their own files. **The upgrade waits
+    until every paper session has stopped:** the service will not switch
+    versions while a session is active. Mixed-version workers are never
     adopted.
-  - *Logout* **(pending P4):** paper workers run as units bound to
-    `graphical-session.target` (`PartOf=`), so the end of the desktop session
-    drains them. Each ends with the reason `logout`. Backtests finish or are
-    cancelled. `Linger=yes` would otherwise keep them alive.
+  - *Logout (D16):* paper workers run as units bound to
+    `graphical-session.target` (`PartOf=`). When the desktop session ends, each
+    worker runs the end procedure: halt the strategy, **cancel open orders**,
+    record the outcomes, write the terminal record with reason `logout`, and
+    seal the journal. The **history is preserved** and stays exportable.
+    Backtests finish or are cancelled. Without this, `Linger=yes` would keep
+    them alive. Running sessions independently of a login is future Cloud
+    scope.
   - *Reboot or power loss:* sessions that were not drained end as
     *interrupted*. On its next start, the service performs terminal takeover
     (§7).
@@ -312,9 +316,9 @@ docs/architecture/  docs/adr/
   driver. WebKitGTK's behaviour there varies, and its DMABUF renderer has a
   diagnostic switch.
 - All targets are measured inside the Tauri webview (§10).
-- If XWayland misses the targets, Phase 0 may evaluate Tauri 3 with CEF (D10).
-  If only native Wayland passes, the evidence goes back to the maintainer under
-  D7 and D10 **(pending P5)**.
+- XWayland is the priority mode (D17). If it misses the targets, Phase 0
+  **stops and escalates to the maintainer**. Evaluating Tauri 3 with CEF, or
+  relying on native Wayland, happens only at the maintainer's direction.
 
 **Version policy:** Tauri is pinned to 2.12.x (plugins: `single-instance`
 2.5.x and `window-state` 2.5.x). Keep the shell thin so a later move to Tauri
@@ -431,13 +435,14 @@ and it violates D1's rule that no build contains an adapter able to reach a
 real account. Upstream puts every adapter, including `sandbox` and `databento`,
 behind one `adapters` feature (`crates/pyo3/Cargo.toml` at rc9).
 
-**Proposed default (pending P1):**
+**Decision (D13; D1 is not relaxed):**
 - Phase 0 builds a **simulation-only wheel** from the exact upstream tag. The
   build applies a small, auditable change to the feature list, enabling only
   `nautilus-sandbox` and `nautilus-databento`. It also removes the Python
   modules of the excluded adapters.
-- The build records its provenance (tag, patch, toolchain, checksums) and
-  publishes source for the wheel.
+- The build records its provenance (tag, patch, toolchain, checksums). Its
+  source is provided as the LGPL requires, as determined by legal review
+  (D20).
 - Clipper proposes per-adapter features upstream.
 
 **Gate:**
@@ -445,8 +450,8 @@ behind one `adapters` feature (`crates/pyo3/Cargo.toml` at rc9).
   factories: only the sandbox may appear.
 - Run backtest and sandbox smoke tests from a clean install.
 
-If the restricted build is not feasible, the maintainer decides between
-maintaining that build patch and amending D1.
+If the restricted build is not feasible, the evidence goes back to the
+maintainer. Relaxing D1 is not a fallback (D13).
 
 ### Backtests
 
@@ -472,7 +477,7 @@ maintaining that build patch and amending D1.
 **backtest** exchange defaults margin accounts to 10× leverage, and the
 sandbox defaults to 1×.
 
-**Execution timing (pending P2).**
+**Execution timing (D14).**
 - With zero latency, Nautilus settles an order submitted in `on_bar(N)`
   against the book left at **bar N's close**. That is the close the strategy
   just observed.
@@ -572,9 +577,10 @@ separate boundaries:
   the database. Its holder writes the journal, using an exclusive `flock` that
   the kernel releases when the process dies. The journal records the worker's
   **generation** at start.
-- **Clean end.** On stop, drain or logout, the worker writes the terminal
-  record (`stopped`, `logout`, `drained`), **seals** the journal, and releases
-  the lease. Sealing is a trigger that refuses further writes.
+- **Clean end (D18).** On stop, drain or logout, the worker cancels open
+  orders and records their outcomes (D16). It then writes the terminal record
+  (`stopped`, `logout`, `drained`), **seals** the journal, and releases the
+  lease. Sealing is a trigger that refuses further writes.
 - **Takeover.** When a worker dies, the service acquires the lease without
   blocking. It verifies that the journal's last generation matches the launch
   intent, then appends **exactly one** `interrupted` terminal record with the
@@ -591,7 +597,7 @@ separate boundaries:
 - effective and observed timestamps;
 - the triggering data reference for each fill;
 - `driving_data_retained` (false when the provider licence forbids retention,
-  **pending P7**);
+  D19);
 - the hash-linked audit chain (§9).
 
 Export uses SQLite's online backup API, which is consistent while the session
@@ -647,7 +653,7 @@ These are guardrails, not a security boundary (§9).
   orders, flatten (a new order that needs its own authorization) and trigger
   emergency stop. Emergency stop is upstream trading-state halting plus
   cancel-all; confirm the API at the pin.
-- **MCP (pending P3)** has a `paper:halt` grant that **latches off new
+- **MCP (D15)** has a `paper:halt` grant that **latches off new
   exposure and stops the strategy**. It can neither cancel existing orders
   nor flatten.
 - Re-enabling a halted session needs a human.
@@ -686,7 +692,7 @@ These are guardrails, not a security boundary (§9).
 | `workspace:write` | `open_chart`, `set_chart_*`, `set_layout`, `show_backtest` | Alpha-R |
 | `paper:read` | `list_paper_sessions`, `get_positions`, `get_orders`, `get_session_journal` | Alpha-P |
 | `paper:prepare` | `prepare_paper_order`, `prepare_paper_deployment` (intents only) | Alpha-P |
-| `paper:halt` (pending P3) | `halt_session` (latch off new exposure, stop strategy) | Alpha-P |
+| `paper:halt` (D15) | `halt_session` (latch off new exposure, stop strategy) | Alpha-P |
 | *never grantable to MCP* | approve, acknowledge strategy, cancel, flatten, re-enable, edit policy or limits, manage grants, native window operations | — |
 
 **REST.** Versioned under `/v1`. Each mutation carries a request ID, an
@@ -823,17 +829,19 @@ Windows is implemented in its own phase, after a build spike.
 - **NautilusTrader is LGPL-3.0-only.** Leaving it as an ordinary wheel does
   not by itself satisfy LGPLv3 §4. The release must give recipients a
   **working way to run the package with a compatible replacement engine**.
-  Proposed (pending P8):
+  Decided (D20):
   1. A documented override. The launcher prefers a user-owned engine
      environment named in `~/.config/clipper/engine-override`.
   2. The override persists across upgrades.
   3. Phase 4 tests it after a clean install.
-  4. Source and build materials for the restricted wheel ship with each
-     release.
+  4. Source for the modified engine build is provided as the LGPL requires.
 
-  Counsel confirms the path.
-- **AGPL corresponding source** for each shipped build is published with the
-  release: the exact source, build scripts and lockfiles. §13 obligations apply
+  Legal review confirms the path.
+- **Source is published only as the applicable licences require (D20).**
+  Legal review determines what each release must provide; the expected
+  candidates are Clipper's AGPL corresponding source for conveyed builds and
+  the modified engine's LGPL source.
+- **Every release needs maintainer and legal review** before it ships (D20). §13 obligations apply
   when a modified version is offered for remote interaction. Conveying
   binaries, combined works and Cloud deployments each need their own analysis
   once concrete.
@@ -877,7 +885,7 @@ features enabled.
 
 | Component | Candidate | Status |
 |---|---|---|
-| NautilusTrader | `2.0.0rc9`, restricted build (pending P1) | untested in Clipper |
+| NautilusTrader | `2.0.0rc9`, simulation-only build (D13) | untested in Clipper |
 | CPython | 3.13.x (python-build-standalone) | untested in Clipper |
 | MCP SDK | `mcp` 2.3.x | Codex smoke-tested stdio at 2026-07-28 and 2025-11-25; real host negotiations untested |
 | FastAPI / Pydantic | 0.165.x / 2.14.x | untested together |

@@ -38,6 +38,7 @@ outcomes.
    - Inspect the wheel and `_libnautilus`, and list the importable execution
      factories: only the sandbox may appear.
    - Record the tag, the patch diff, the toolchain, checksums and build time.
+   - If the restricted build is infeasible, escalate. D1 is not relaxed (D13).
 2. **Packaged engine.** From the installed prefix:
    - run a deterministic synthetic `BacktestNode` run;
    - construct a sandbox `LiveNode` with explicit fee, fill and latency
@@ -88,8 +89,11 @@ outcomes.
      outcome reported.
    - Upgrade to a second version with an active worker: side-by-side
      prefixes, and the old worker untouched.
-   - Logout, with `PartOf=graphical-session.target`: drained, and the reason
-     recorded.
+   - Logout, with `PartOf=graphical-session.target`: the session ends, open
+     orders are cancelled, the reason `logout` is recorded and the history is
+     preserved (D16).
+   - An upgrade attempted while a session is active waits until the session
+     has stopped (D16).
    - Reboot: the next start performs takeover.
    - Uninstall: user data is kept.
 7. **Durability.**
@@ -115,8 +119,9 @@ outcomes.
    - Process count and PSS per window.
 9. **Native Wayland, secondary.** Repeat 8 with best-effort bounds and record
    the limits.
-10. **CEF evaluation (D10)**, only if XWayland fails: Tauri 3 with
-    `tauri-runtime-cef`, repeating proof 8.
+10. **If XWayland fails: stop and escalate to the maintainer (D17).** Run CEF
+    (Tauri 3 with `tauri-runtime-cef`) or rely on native Wayland only at the
+    maintainer's direction.
 11. **Webview least privilege.**
     - Commands are declared through `AppManifest::commands`, and each
       window's capabilities grant only its own commands.
@@ -165,8 +170,8 @@ Never claim support or performance without evidence.
 - **0C:** **XWayland** meets the targets, including detached-window restore;
 - **0D:** the contract proxy converges.
 
-**If only native Wayland passes,** or only CEF does, record the failure and
-bring the evidence to the maintainer (D7, D10, P5). Do not silently fall back
+**If XWayland fails,** record the failure and escalate to the maintainer
+(D17). The same applies if the restricted engine build fails (D13). Do not silently fall back
 to a browser product.
 
 **References:**
