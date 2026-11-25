@@ -122,27 +122,74 @@ or real-money date is promised.
 | Windows portability debt | Medium | ADR-018 interfaces; Windows spike first. |
 | Overbuilding | Medium | MCP first; proofs before polish; one docked window before detached windows. |
 
-## Backlog after acceptance (not created yet)
+## Numbered development epics
 
-**Alpha-R:**
-- foundation and CI, including the restricted engine build;
-- the trading adapter, timing gate, attribution, FIFO and specifications;
-- data, calendars and corporate actions;
-- strategy snapshots and acknowledgement;
-- MCP grants and the CLI;
-- backtesting and financial verification;
-- shell, channels, lifecycle and side-by-side packaging;
-- workspace, streams and charting;
-- release evidence and security.
+**Status:** provisional roadmap, not authorization to start feature work.
+Epic 00 is the pre-approval validation work. Epics 01–14 are planned parent
+issues; create the implementation backlog after Phase 0 evidence is reviewed,
+the ADRs are accepted and issue #1 is signed off. Epic numbers are stable
+planning IDs, not GitHub issue numbers. Do not mark an epic complete merely
+because a proof-of-concept passed. The phase gates above remain authoritative.
 
-**Alpha-P:**
-- the controller model;
-- paper sessions, the outbox, the journal and sealing;
-- approvals and limits;
-- logout and halt.
+P0 = required for the relevant alpha release; P1 = subsequent product
+enhancement or future prerequisite; P2 = deferred, with separate approval.
+The owner column suggests a workstream, not an assigned GitHub user or agent.
 
-**Later:** resume, protected approval, isolation, drawings, editor, Windows,
-Cloud.
+| Epic | Priority / milestone | Suggested owner | Scope and exit evidence | Dependencies |
+|---|---|---|---|---|
+| 00 — Technical Validation | P0 / Phase 0 | Trading + desktop; independent review | Four disposable proofs 0A–0D; report PASS/FAIL/NOT RUN, measurements, provenance and escalations; maintainer accepts or amends ADRs on evidence | #1 |
+| 01 — Foundation & CI/CD | P0 / Alpha-R, Phase 1 | Foundation | Monorepo, uv/npm/Cargo locks, CI, DTOs, OpenAPI, grants, approval/controller schemas, cursor contracts, app.db migrations, worker launch intents and leases; clean build and contract tests | 00 accepted |
+| 02 — NautilusTrader Integration | P0 / Alpha-R, Phases 1–2 | Trading | Pinned simulation-only upstream build, inspection/provenance gate, adapter and timing mechanism, explicit fee/fill/latency specifications; packaged smoke and artifact inspection pass | 00A, 01 contracts |
+| 03 — Market Data Infrastructure | P0 / Alpha-R, Phase 2; provider extension in Phase 6 | Data | Staged import, immutable catalog and manifests, instruments, exchange calendars, corporate-action coverage/refusal, provenance and entitlement; coverage and round-trip fixtures pass. Live provider and retention/export filter are Alpha-P work | 01, 02 adapter contract |
+| 04 — MCP Server & CLI | P0 / Alpha-R, Phases 1–3; paper extension in Phases 5–6 | MCP/CLI | Stdio, per-client grants, server-derived actors, scoped tools, human CLI acknowledgement, jobs/results, desktop workspace state; Claude Code and Codex invocation/denial tests; paper halt only as approved in D15 | 01 contracts; 03, 05, 08 for research slice; 07 for workspace extension; 09 for paper extension |
+| 05 — Backtesting & Financial Validation | P0 / Alpha-R, Phase 2 | Trading + independent reviewer | Deterministic Nautilus runs, independent expected ledgers, after_watermark counterexamples, attribution, FIFO, effective-dated fees and execution assumptions; reproducible results and durable job handling | 02, 03, 08 snapshots |
+| 06 — Native Desktop & Packaging | P0 / Alpha-R, Phases 1, 3–4 | Desktop | Tauri shell, Unix-socket and webview channels, service lifecycle, XWayland-first .deb packaging, versioned runtimes, activation fence, upgrades, uninstall and LGPL override; installed-package and lifecycle tests | 00B–0D, 01 contracts; 04 research, 05 for integrated desktop slice; 13 local release checks |
+| 07 — Charting & UI/UX | P0 / Alpha-R, Phase 3 | Desktop/UI | Shared React workspace, docked then detached native charts, service-computed basic indicators, markers, reports, durable cursors, accessibility and display recovery; D26/D27 performance and soak gates | 01, 03, 04 research, 05, 06 shell |
+| 08 — Python Strategy Management | P0 / Alpha-R, Phase 2 | Trading + MCP/CLI | Single-file content-addressed snapshots, staged-root structural validation, human acknowledgement, exact snapshot execution and source/hash display; rejection and changed-file tests. No in-app editor or untrusted-code support | 01 contracts, 02 adapter contract |
+| 09 — Paper Trading & Risk Management | P0 / Alpha-P, Phases 5–6 | Trading + foundation + independent reviewer | Replay first, then approved live read-only feed; session controller and transfer, journal/outbox/receipts, durable publication and sealing, approval/limits, halt/stop/cancel/flatten permissions, logout and upgrade fencing; Alpha-P fault suite and memory soak | Alpha-R gate; 03 provider extension before live-feed stage |
+| 10 — Advanced Indicators & Drawing Tools | P1 / later | Desktop + research | Additional indicator families and custom drawing tools, persistence and cross-window parity; chart correctness and UX tests. Basic service-computed indicators remain in 07 | 07; separate scope/ADR |
+| 11 — Strategy Optimization & Research | P1 / later | Research + trading | Parameter sweeps, walk-forward/out-of-sample validation, comparative reporting, resource budgets and reproducibility; independent financial fixtures | 05, 08; separate scope/ADR |
+| 12 — Watchlists & Market Screener | P1 / later | Data + desktop | Watchlist management, point-in-time filtering and screening, provider entitlements and query performance; validated universe and results. Do not expand the alpha workspace gate | 03, 07; separate scope/ADR |
+| 13 — Cloud Readiness & Security | P0 / local Alpha-R and Alpha-P security; P1 / future Cloud | Foundation + security reviewer | Local channel, grant, threat model, log redaction, backup/restore and release evidence gates apply from Phase 1. Later: protected human-presence approval, credential and strategy isolation, tenant boundaries and separate Clipper Cloud review; no Cloud implementation in alpha | 01 contracts; local checks run alongside 02–09; future Cloud requires dedicated ADRs/legal/security review |
+| 14 — Live Brokerage Integration | P2 / future only | Trading + security + legal | Separate architecture and authorization decision, protected approvals, isolated credentials, broker adapters, risk limits, reconciliation, operational and regulatory review. No real execution factory in alpha builds; no automatic relaxation of D1/D13 | Separate maintainer approval; 09 and future 13 prerequisites; regulatory, licensing and security sign-off |
 
-Every issue needs a testable gate, its dependencies, an owner, non-goals and
-evidence.
+### Epic 00 — proposed validation child issues
+
+The authoritative procedures, thresholds, versions and acceptance details are
+in [Phase 0 validation](desktop-validation.md). These are planning IDs for
+disposable experiments; run in the documented 0A → 0B → 0C → 0D order.
+
+| Child | Suggested owner | Scope and acceptance | Dependency |
+|---|---|---|---|
+| 00A — Engine artifact, timing and FIFO | Trading agent; independent financial reviewer | Build and inspect restricted artifact; prove only sandbox execution factory, exact source/provenance, timing counterexamples and independent FIFO/fee ledger. Record failures and escalate; no D1 relaxation | None |
+| 00B — Installed packages, channels, lifecycle and durability | Desktop + foundation agents | Prove reference .deb/runtime packaging, authenticated Unix socket/loopback channels, spoof/relay resistance, service adoption, side-by-side versions, shutdown/logout, durability and fault behavior per proof 0B | 00A |
+| 00C — Display, GPU and memory | Desktop agent on reference hardware | XWayland-first WebKitGTK chart workload, detachable windows, display restore, performance and memory soak per D26/D27; escalate if targets fail, no automatic runtime fallback | 00B |
+| 00D — Workspace contract proxy | MCP + desktop agents | Disposable synthetic service, scoped workspace reads/mutations, cursor convergence across native windows, stale revision refusal, closed-window pending presentation and E2E evidence | 00C |
+| 00E — Evidence review and approval | Maintainer + independent reviewer | Review all four proof reports, resolve every escalation, amend and accept ADRs, re-estimate Alpha-R and Alpha-P, approve/merge architecture, then create implementation backlog | 00A–00D |
+
+### Backlog activation and agent workflow
+
+1. The maintainer reviews this provisional epic organization. It does not
+   change any accepted decision or the evidence-based acceptance rule.
+2. Run Phase 0 as disposable validation, not production feature implementation.
+   Report each proof independently in PR #2. No paid data or real execution.
+3. Accept or amend ADRs based on evidence; resolve escalations and explicitly
+   approve architecture before merging PR #2 and closing issue #1.
+4. Create numbered parent GitHub issues and prioritized child implementation
+   issues from the accepted roadmap. Use actual issue references for
+   dependencies; reserve future work without making it runnable.
+5. Establish contracts before parallel implementation. With two coding
+   agents, prioritize foundation/trading and MCP; add the desktop integration
+   stream after the headless research slice. Independent reviewers validate
+   financial, security and release evidence rather than reviewing their own
+   work. Do not assume agents are assigned or running.
+6. Every child issue must include parent epic, priority, milestone, owner,
+   dependency references, objective, explicit non-goals, deliverables,
+   measurable acceptance tests, evidence and reviewer. Cross-cutting
+   extensions have their own dependencies so parent epics do not form a
+   scheduling cycle. Do not bypass phase or release gates.
+
+Later features (paper resume, protected approval, isolation, multi-file
+strategies, editor, Windows, broker paper and Cloud) retain separate ADRs
+and review. No revised delivery estimate until the Phase 0 evidence is
+available. No GitHub parent or child issues are created by this document.
