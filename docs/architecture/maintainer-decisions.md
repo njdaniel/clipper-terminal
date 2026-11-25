@@ -449,3 +449,19 @@ Phase 0. Claude proposed the thresholds; the maintainer may change them.
   no rise in per-run peak. A 2-hour replay-fed paper session must reach a
   plateau.
 - **Reporting.** Peak and steady-state memory are reported for every group.
+
+### D28. Architectural direction approved
+
+**Decision (2026-11-25):** the maintainer approves the architectural direction
+of revision 4, as amended by D27.
+
+**What this approves:** the direction set out in the overview and ADR-001 to
+ADR-020.
+
+**What stays gated on Phase 0 evidence** (implementation plan, Epic 00E):
+- accepting each ADR, or amending it;
+- merging PR #2 and closing issue #1;
+- creating the implementation backlog.
+
+The numbered epics in the implementation plan (`fbcaf6a`) are the provisional
+roadmap.
