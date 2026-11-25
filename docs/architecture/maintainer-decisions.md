@@ -192,3 +192,58 @@ after.
   3–5 week figure until the Phase 1 spike reports (D4, review P1-6).
 - **Overview:** reference machine (D6), local threat model (D2), and
   trade-log requirements (D1).
+
+## Follow-up decisions from the second review (2026-11-25)
+
+These answer the questions in
+[`claude-review-2.md`](claude-review-2.md#questions-for-the-maintainer).
+
+### D7. XWayland is the default display mode on Linux
+
+**Decision:** approved. Clipper runs under XWayland (`GDK_BACKEND=x11`) by
+default, so detached windows can be placed and restored. Native Wayland stays
+a tested secondary mode.
+
+**Consequence:** under X11, any same-user program can read the screen and
+inject input into Clipper's windows. This is accepted for alpha under D2 and
+ADR-015. Future approvals must rely on proof of human presence, which holds
+under either display mode.
+
+### D8. MCP is the primary AI control interface
+
+**Decision:** AI agents control Clipper through MCP tools. Driving the UI by
+input injection, screenshots or computer use is not a supported control path.
+
+**Consequences:**
+- Every capability an agent needs is exposed as an MCP tool. The one exception
+  is human approval, which stays out of MCP.
+- Tool documentation and host setup guides tell agents to use MCP and not to
+  automate the UI.
+- In alpha this is a policy and design rule, not an enforced boundary: under
+  X11 (D7), Clipper cannot technically prevent UI automation.
+
+### D9. No in-app code editor in alpha
+
+**Decision:** Monaco is removed from alpha. Strategies are workspace files
+edited with the user's or agent's own tools. The UI shows the source read-only,
+with its hash.
+
+### D10. Phase 0 may evaluate Tauri 3 with the CEF runtime
+
+**Decision:** if WebKitGTK fails the chart targets on the reference GPU, Phase 0
+may evaluate Tauri 3 with the CEF (Chromium) runtime.
+
+**Consequence:** evaluating it is allowed. Adopting it is not decided: it
+would mean taking on an alpha dependency, and it needs an amendment to
+ADR-017 after the evidence is reviewed.
+
+### D11. Alpha-R ships as a `.deb` only
+
+**Decision:** Alpha-R packaging is a single `.deb` for the reference platform.
+AppImage and Flatpak are deferred.
+
+### D12. Codex reviews the reconciled design
+
+**Decision:** Codex performs the independent review of the reconciled
+documents. Claude wrote them, so Claude's reviews are not independent of that
+text. The review is written to `docs/architecture/codex-review.md`.

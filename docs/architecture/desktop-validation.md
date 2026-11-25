@@ -103,8 +103,9 @@ evidence.
   GPU;
 - the workspace contract works end to end.
 
-**If WebKitGTK fails on every display mode,** bring options to the maintainer:
-- Tauri 3 with the CEF runtime (alpha);
+**If WebKitGTK fails on every display mode,** run the authorized Tauri 3 + CEF
+evaluation (D10) through experiments 5–7, then bring options to the maintainer:
+- Tauri 3 with the CEF runtime (alpha; adopting it requires amending ADR-017);
 - driver or compositor workarounds;
 - relaxing the targets.
 

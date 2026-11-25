@@ -213,7 +213,7 @@ capability from the attack surface.
   survive logout. Clipper still promises no continuity across logout or
   reboot. A paper session interrupted by either ends as *interrupted* (D1).
 
-**Packaging (Linux alpha): one `.deb`.**
+**Packaging (Linux alpha): one `.deb` (D11).**
 - The Tauri bundler produces the shell package and declares
   `libwebkit2gtk-4.1-0`, `libgtk-3-0` and the appindicator library for the
   tray.
@@ -251,7 +251,7 @@ capability from the attack surface.
   detached windows to a given monitor cannot work under native Wayland.
 - The reference desktop is COSMIC, and the maintainer runs applications under
   X11 through XWayland. Clipper therefore runs under XWayland
-  (`GDK_BACKEND=x11`) by default on Linux. Native Wayland is a tested
+  (`GDK_BACKEND=x11`) by default on Linux (approved, D7). Native Wayland is a tested
   secondary mode, where window bounds are best-effort.
 - Semantic layout, meaning which chart lives in which window, is saved apart
   from native bounds.
@@ -265,7 +265,7 @@ capability from the attack surface.
   webview**. Numbers from desktop Chrome or Playwright WebKit don't count.
 - If WebKitGTK fails the targets, the fallback to evaluate is Tauri 3's
   optional CEF (Chromium) runtime (`tauri-runtime-cef`, alpha only today).
-  That is a maintainer decision, not an assumption.
+  Phase 0 may evaluate it (D10); adopting it requires amending ADR-017.
 
 **Version policy:**
 - Pin `tauri` 2.12.x and the plugins in `Cargo.lock`.
@@ -274,6 +274,11 @@ capability from the attack surface.
   so a later move to Tauri 3 is cheap.
 
 ## 5. Workspace state and AI desktop control
+
+MCP is the primary AI control interface (D8). Every capability an agent needs
+is an MCP tool; the one exception is human approval. Driving the UI through
+input injection, screenshots or computer use is not a supported path, and no
+feature may depend on it.
 
 - The workspace is **authoritative in the service**, stored in `app.db`. It
   holds workspaces, layouts (dock tree plus detached-window assignments),
@@ -564,7 +569,7 @@ of unknown origin):
 - Lightweight Charts 5.3, plus the official `session-highlighting`,
   `user-price-lines` and `accessibility` plugins.
 - Drawing tools are custom and come after alpha.
-- The in-app code editor (Monaco) is out of alpha. Strategies are files the
+- The in-app code editor (Monaco) is out of alpha (D9). Strategies are files the
   user or agent edits with their own tools, and the UI shows the source
   read-only, with its hash.
 

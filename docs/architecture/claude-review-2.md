@@ -254,6 +254,8 @@ been verified at runtime.
    deferred?
 5. Who reviews this reconciliation independently? It shouldn't be Claude.
 
+**Answered 2026-11-25** in [`maintainer-decisions.md`](maintainer-decisions.md), D7–D12.
+
 ## What should happen next
 
 1. The maintainer answers the questions above.
