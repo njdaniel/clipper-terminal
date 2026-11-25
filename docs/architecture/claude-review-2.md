@@ -298,3 +298,20 @@ supplied evidence, and Claude accepts every correction listed here.
 Codex could not query the NVIDIA driver from inside its sandbox. Claude's
 direct query (RTX 4090, 580.159.03) stands, but that runtime still needs
 recording during Phase 0.
+
+### Errata after the Codex follow-up review
+
+**Added 2026-11-25.** The [Codex follow-up review](codex-review-2.md)
+contradicted further claims. Revision 4 carries the fixes.
+
+| Claude claim | Correction |
+|---|---|
+| Errata above and revision 3: a positive latency enforces `after_watermark`, giving the next bar's close on bar-only data. | Contradicted. Codex reproduced fills at the observed close (1.10010): one released by a strategy timer at 00:01:02, one by the end-of-run drain at 00:01:01. The sandbox drains due commands before applying each update. Fixed by testing a constrained native configuration and a Clipper gate against a counterexample suite (D22, ADR-013). |
+| Revision 3: a feature-list change plus pruning Python modules gives a simulation-only wheel. | Native registrations share the `adapters` guard, and the maturin config enables `defi` and `hypersync`. Fixed with the four-part patch (ADR-002). |
+| Revision 3: one package with versioned `/opt` directories keeps old versions during an upgrade. | dpkg removed the old package's files during unpack. Fixed with side-by-side versioned packages (D23, ADR-017). |
+| Revision 3: `PartOf=graphical-session.target` drains workers on logout. | It stops the unit but runs no drain. Fixed with the logind watcher, an `ExecStop` drain and a supervised timeout (D24, ADR-016). |
+| Revision 3: the HMAC challenge proves the endpoint's identity. | A relaying listener can pass it. Fixed with Unix-socket native channels (ADR-016). |
+| Revision 3: `flock` is released when the worker dies, and a seal trigger blocks writes. | A child process that inherits the descriptor keeps the lock, and a replaced path gives a second lock. An INSERT-only trigger still allowed updates, and the terminal record and seal were separate steps. Fixed in ADR-004 and ADR-008. |
+| Revision 3: AST validation establishes a self-contained strategy. | It establishes structure only (ADR-005). |
+| Revision 3: halt "stops the strategy". | Stopping runs `on_stop`, which can cancel orders. Halt now suspends the strategy instead (overview §7). |
+| Revision 3: the backtest manifest needs only the snapshot hash. | It dropped the strategy's configuration. That is restored. |

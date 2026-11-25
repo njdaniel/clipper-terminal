@@ -1,186 +1,229 @@
-# Phase 0 validation spike (before architecture approval)
+# Phase 0 validation spike (the acceptance evidence)
 
 **Status:** not executed.
-**Reference:** issue #1, PR #2; ADR-001, ADR-002, ADR-013, ADR-016,
-ADR-017; Codex review P0 findings.
-**Timebox:** 4–8 working days for all four proofs.
+**Revision:** 4 (2026-11-25).
+**Feeds into:** ADR-001/002/004/005/008/013/016/017/019/020, and the Codex
+follow-up P0s.
+**Timebox:** 6–10 working days.
 
-Run on the reference machine (`overview.md` §13). GPU and multi-monitor work
-needs that real hardware. Production features, credentials and real execution
-are all out of scope; use synthetic data only. Work on a disposable spike
-branch and link the evidence from PR #2.
+**Rules:**
+- Run on the reference machine (`overview.md` §13).
+- No production features, credentials or real execution.
+- Use only **synthetic OHLCV bars plus bid/ask quotes, with provenance**
+  (D25).
+- Work on a disposable spike branch, and link the evidence from PR #2.
+- The ADRs are accepted on this evidence.
 
-The spike is **four proofs, reported independently and run in order**. They
-sit on the critical path to approval, so do not polish styling or UI before
-0A–0C have reported.
+The four proofs run in order and are reported independently. Polishing styling
+or UI waits until 0A and 0B have reported.
 
-## Fixed starting point
-
-- Tauri 2.12.x with only `single-instance` and `window-state`. **No
-  `tauri-plugin-shell`.**
-- CPython 3.13 from python-build-standalone, installed at
-  `/opt/clipper/<version>/`. The environment is built **at that path** from
-  locked, non-editable wheels.
-- NautilusTrader `2.0.0rc9`: the ordinary wheel, for comparison only, and the
-  restricted build (proof 0A).
-- `mcp>=2.3,<3`; FastAPI; a systemd user unit; Lightweight Charts 5.3.
-
-Record each result as PASS, FAIL or NOT RUN, with expected and actual
-outcomes.
+Record every check as **PASS**, **FAIL** or **NOT RUN**, with the expected and
+actual result. Phase 0 can only fail closed: an unrun check never counts as a
+pass.
 
 ## 0A: Engine artifact and financial timing
 
-1. **Artifact gate (D1, ADR-002).**
-   - List the execution factories in the ordinary rc9 wheel, for comparison.
-   - Build the restricted wheel from tag `v2.0.0rc9`, enabling only the
-     `nautilus-sandbox` and `nautilus-databento` features and removing the
-     Python modules of the excluded adapters.
-   - Inspect the wheel and `_libnautilus`, and list the importable execution
-     factories: only the sandbox may appear.
+1. **Simulation-only build (D13, ADR-002).**
+   - Start from tag `v2.0.0rc9` and apply the four-part patch: per-adapter
+     features in place of the `adapters` umbrella; per-adapter native
+     registration guards in `crates/pyo3/src/lib.rs`; maturin features
+     without `defi`, `hypersync`, `redis` or `postgres`; the excluded Python
+     packages and `.pyi` stubs pruned.
+   - Record `cargo tree -p nautilus-pyo3 -e features` run with the wheel's
+     own flags.
+   - Inspect the wheel manifest and native modules. Import factories: the
+     sandbox and Databento must import; Binance, Interactive Brokers and
+     blockchain must fail.
    - Record the tag, the patch diff, the toolchain, checksums and build time.
-   - If the restricted build is infeasible, escalate. D1 is not relaxed (D13).
-2. **Packaged engine.** From the installed prefix:
-   - run a deterministic synthetic `BacktestNode` run;
-   - construct a sandbox `LiveNode` with explicit fee, fill and latency
-     specifications, fed by replayed data;
-   - confirm results come from the typed event projection, with no pandas
-     needed.
-   Record import time and peak memory.
-3. **Execution timing (ADR-013).** Run one fixture three ways:
-   - zero latency, to show the same-close settlement;
-   - the `after_watermark` policy on bars only, expecting the next bar's close;
-   - `after_watermark` with finer execution bars, expecting the first
-     subsequent update.
-   Compare each against an independently calculated ledger. Include a bar
-   where a stop and a target compete.
+   - **If the build is infeasible, escalate. Do not relax D1.**
+2. **Packaged engine.** From the installed runtime prefix:
+   - a synthetic `BacktestNode` run;
+   - a sandbox `LiveNode` fed by the replay feed, with explicit
+     specifications;
+   - results from the typed projection, with no pandas installed.
+   - Measure NautilusTrader worker memory separately: report peak
+     `memory.peak` (D26).
+3. **Timing enforcement (D14, D22).** Run the **counterexample suite** under
+   both mechanisms:
+   - **(a) native:** a constrained upstream configuration;
+   - **(b) Clipper gate.**
 
-## 0B: Package, identity and lifecycle
+   The suite covers:
+   - a strategy timer;
+   - the end of the feed;
+   - equal timestamps;
+   - another instrument's data;
+   - first-update ordering;
+   - a stale feed;
+   - resting orders;
+   - partial fills;
+   - bid/ask quotes arriving between bars.
 
-4. **`.deb`.**
-   - Build in an Ubuntu 22.04 container at the final prefix.
-   - Verify that no build paths remain (grep the prefix and `pyvenv.cfg`),
-     that `ldd` finds every ELF dependency, and that native imports work.
-   - Install on the reference machine without developer toolchains, then
-     launch offline.
-   - Run the service, CLI and MCP with no development environment present.
-   - Record the floor of the assembled package and its size.
-5. **Identity and authentication on the installed package.**
-   - The HMAC identity challenge succeeds, and the client sends no bearer
-     before a valid proof.
-   - Rejection cases: a spoofed listener on the recorded port, a stale
-     `service.json`, a wrong version.
-   - Authenticated REST reads and writes work.
-   - Stream ticket issuance works, and the WebSocket connects using
-     `Sec-WebSocket-Protocol`.
-   - Record the actual `Origin` and `Host` values on HTTP and WebSocket from
-     the WebKitGTK webview. If the origin is opaque, record FAIL and propose a
-     transport.
-   - Token rotation on reattach; concurrent shell, CLI and MCP clients.
-   - Refusals: a CLI grant with a browser `Origin`, and an MCP grant on the
-     approval and acknowledgement routes.
-6. **Lifecycle.**
-   - Second launch; closing the last window with a synthetic job active (the
-     tray stays visible); `kill -9` on the shell, then reopen.
-   - Service restart while a transient worker lives: the worker is adopted
-     through its launch intent and generation.
-   - Kill the worker, then check the service's **terminal takeover**: exactly
-     one record, and the journal sealed.
-   - "Stop service" with an active job: native confirmation, drain, and the
-     outcome reported.
-   - Upgrade to a second version with an active worker: side-by-side
-     prefixes, and the old worker untouched.
-   - Logout, with `PartOf=graphical-session.target`: the session ends, open
-     orders are cancelled, the reason `logout` is recorded and the history is
-     preserved (D16).
-   - An upgrade attempted while a session is active waits until the session
-     has stopped (D16).
-   - Reboot: the next start performs takeover.
-   - Uninstall: user data is kept.
-7. **Durability.**
-   - Run the outbox, receipt and outcome chain with a synthetic sandbox
-     session.
-   - Kill at each boundary: after approval and before delivery; after receipt
-     and before the act; after the fill and before the commit.
-   - Lost and duplicated retries; the same command ID with a changed digest
-     returns `conflict`.
-   - Disk full while writing the journal: the session freezes.
-   - Abrupt power loss, in a VM with `FULL`, to check committed events survive.
+   Reproduce Codex's four variations of the upstream example as baselines.
+   Run the suite for the backtest and for the replay sandbox. **Prefer (a) if
+   it passes everything.** Record which mechanism passes, and what upstream
+   change (a) would need.
+4. **Attribution and FIFO.**
+   - Every fill carries an attribution record: the feed event ID or OHLC leg,
+     or an explicit origin.
+   - FIFO fixture: buy 1 @ 10 and 1 @ 20, then sell 1 @ 30. FIFO gives 20 and
+     the engine gives 15. Quantities and cash must reconcile exactly.
+   - Add fixtures for lot and tick refusal, and for an order-level fee
+     minimum and cap across partial fills.
+   - Check each against an independent ledger.
 
-## 0C: Display and GPU (D7 default first)
+## 0B: Package, channels, lifecycle and durability
 
-8. **XWayland (`GDK_BACKEND=x11`) must pass.** Run with
-   `WEBKIT_DISABLE_DMABUF_RENDERER` unset and set to `1`:
-   - Check for a blank or flickering window at startup.
-   - Run the chart performance protocol (overview §10).
-   - Two windows on two monitors: detach and **restore after relaunch**, plus
-     fallback when a monitor is unplugged.
-   - Resize and DPI changes.
-   - Tray visibility on COSMIC.
-   - Process count and PSS per window.
-9. **Native Wayland, secondary.** Repeat 8 with best-effort bounds and record
-   the limits.
-10. **If XWayland fails: stop and escalate to the maintainer (D17).** Run CEF
-    (Tauri 3 with `tauri-runtime-cef`) or rely on native Wayland only at the
-    maintainer's direction.
-11. **Webview least privilege.**
-    - Commands are declared through `AppManifest::commands`, and each
-      window's capabilities grant only its own commands.
-    - `on_navigation` and the new-window handler deny everything except
-      bundled content.
-    - CSP blocks remote scripts.
-    - No token in arguments, logs, URLs or the bundle.
-    - Record whether `xdotool` can drive the UI under XWayland versus Wayland.
-      This is threat-model evidence for ADR-015.
+5. **Side-by-side packages (D23).**
+   - Build `clipper-runtime-<v1>`, `clipper-runtime-<v2>` and `clipper` in an
+     Ubuntu 22.04 container, each runtime at its final path.
+   - Verify for every launcher and worker:
+     - the interpreter symlink, `pyvenv.cfg`, `sys.executable` and
+       `sys.base_prefix`;
+     - `ldd`;
+     - no leftover build paths.
+   - Install offline with no developer toolchain.
+   - Upgrade to v2 **while a v1 worker is active**:
+     - v1's files must remain and the worker must keep running;
+     - activation must wait behind the admission fence;
+     - the user `daemon-reload` must run.
+   - `prerm` must refuse removal while v1 is in use; `clipper runtime prune`
+     removes it afterwards.
+   - Uninstall must keep user data.
+6. **Channels and authentication.**
+   - **Unix socket:** a wrong-UID peer is refused, and so is a stale socket.
+   - **Relay attempt:** a listener that relays to the real service must not
+     obtain any credential, because native clients never use TCP and the
+     webview gets its port over the socket.
+   - **Port binding:** the service holds the port without `SO_REUSEPORT`.
+   - **Installed webview:** authenticated REST reads and writes; stream
+     ticket issue, consumption before the upgrade, a simultaneous double
+     redemption, expiry, and wrong-origin or wrong-scope denial.
+   - **Recorded values:** the actual HTTP and WebSocket `Origin` and `Host`.
+     If the origin is opaque, record **FAIL** and test the Rust bridge.
+   - **CSP:** a shell-served CSP header naming the current port, delivered
+     before content loads. If that fails, fall back to a fixed per-user port.
+   - **Grants:** bearer rotation on reattach; MCP grant rotation and revocation
+     while connected (streams close; the principal is kept).
+7. **Lifecycle.**
+   - Second launch.
+   - Closing the last window while a job runs leaves the tray visible.
+   - `kill -9` the shell, then reopen.
+   - Restart the service with a live worker: it is adopted, with
+     `InvocationID`, lease and generation checked.
+   - Takeover of an intent stuck in `starting`.
+   - The lease file is opened `O_CLOEXEC`. A child that inherits a descriptor,
+     and a replaced lock path, must both be refused.
+   - "Stop service" drains, then reports.
+   - Reboot, followed by takeover on the next start.
+8. **Logout and the controller (D24, synthetic session).**
+   - Two logins of the same user (or two sessions on a test seat).
+   - A non-controller's actions are refused.
+   - Transfer control while an approval is pending: the approval is
+     invalidated and the transfer journalled.
+   - Logout by the non-controller leaves the session running.
+   - Logout by the controller, with working orders and queued submit and
+     cancel commands: the session ends within 30 s as `logout`, cancellations
+     resolve, and the journal is sealed.
+   - Force the drain past 30 s: a supervised stop, then takeover marks the
+     session `interrupted` with reason `logout_timeout`, and the history is
+     preserved.
+   - The gateway is unavailable during logout.
+   - Lingering both on and off.
+9. **Durability.**
+   - The outbox, receipt and outcome chain.
+   - Kills at each boundary.
+   - Expiry after a lost receipt: the existing receipt is looked up, never
+     marked undelivered.
+   - The same ID with a changed digest returns `conflict`.
+   - A gateway outage while the worker commits, then replay.
+   - A crash between the journal's terminal commit and the `app.db` repair.
+   - Sealed-journal triggers refuse INSERT, UPDATE and DELETE.
+   - Disk full: the reserved block is used, or the session goes to
+     `finalization_pending`.
+   - Abrupt power loss (in a VM) with `FULL`.
+   - **MCP halt:** an `on_stop` that cancels is not invoked; a delayed submit
+     in the latency queue is withdrawn; a halt racing a dispatch; working
+     orders stay live.
+
+## 0C: Display, GPU and memory (D7, D17, D26)
+
+10. **XWayland first** (`GDK_BACKEND=x11`), with `WEBKIT_DISABLE_DMABUF_RENDERER`
+    unset and set to `1`:
+    - no blank window at startup;
+    - the pan/zoom protocol: **≥ 30 FPS sustained, target 60**;
+    - two windows on two monitors: detach, **restore after relaunch**, and
+      fall back when a monitor is unplugged;
+    - resize and DPI changes;
+    - tray on COSMIC;
+    - **desktop memory < 1 GB** total PSS (shell, all webview processes and
+      the service) with two windows open;
+    - NautilusTrader peak memory reported separately.
+11. **Native Wayland: diagnostic only.** Run the same matrix and record the
+    results. They inform an escalation but are not a fallback.
+12. **If XWayland fails:** stop and escalate to the maintainer (D17). CEF is
+    evaluated only at the maintainer's direction.
+13. **Webview least privilege:**
+    - commands declared through `AppManifest::commands`;
+    - a detached window is denied the main window's commands;
+    - `on_navigation` and `on_new_window` deny navigation;
+    - no token in arguments, logs, URLs or the bundle;
+    - whether `xdotool` can drive the UI under XWayland versus Wayland, as
+      threat-model evidence.
 
 ## 0D: Workspace contract proxy
 
-This proof is deliberately smaller than Phase 3.
-
-12. With a **synthetic workspace service stub**:
+14. With a synthetic workspace stub:
     - MCP reads a chart's state and changes its symbol, timeframe and one
-      indicator. Two windows update through the stream contract (snapshot
-      cursor, then subscribe).
+      indicator.
+    - Two windows update through **durable cursors**. Changes committed
+      between the snapshot and the subscription are not lost.
     - A stale revision returns `conflict`.
-    - Changing the epoch forces a resnapshot.
-    - With every window closed, a mutation reports `presentation: "pending"`.
+    - A service restart keeps the cursors valid and resets presentation
+      hints.
+    - With every window closed, the result is `presentation: "pending"`.
     - The indicator values MCP returns match what the chart renders.
-13. Run one desktop E2E smoke test through `tauri-driver` in **external mode**
-    (no plugin in the product build), on the reference machine and under Xvfb.
+15. One desktop E2E smoke test through `tauri-driver` in external mode, on
+    the reference machine and under Xvfb.
 
 ## Evidence format
 
-For each step, record:
+For each check, record:
 - the procedure;
-- the version matrix (moving candidates to tested selections, overview §14);
-- expected versus actual result;
+- the version matrix (moving entries from candidate to tested, overview §14);
+- the fixture provenance;
+- expected versus actual;
 - redacted logs and screenshots;
-- measurements, with warm and cold samples;
-- the verdict (PASS / FAIL / NOT RUN).
-
-Never claim support or performance without evidence.
+- measurements (warm and cold, with the GPU driver, display mode and
+  WebKitGTK version);
+- the verdict.
 
 ## Go / no-go
 
-**Go** only if all of the following hold:
-- **0A:** the artifact gate passes, or P1 is decided otherwise, and the
-  timing fixture matches the independent ledger;
-- **0B:** the installed package passes authenticated reads, writes and
-  subscriptions, spoof rejection, adoption, takeover and the durability kill
-  tests;
-- **0C:** **XWayland** meets the targets, including detached-window restore;
-- **0D:** the contract proxy converges.
+**Go only if every listed check passes:**
+- **0A:** checks 1–4. The artifact must be a **conforming simulation-only
+  build under D13**: no exception. Timing passes the full counterexample suite
+  under one mechanism, and FIFO and attribution reconcile.
+- **0B:** checks 5–9, including the relay, side-by-side upgrade, controller
+  logout and timeout, seal, lease and halt tests.
+- **0C:** check 10, **under XWayland**: 30 FPS sustained, detached-window
+  restore, desktop under 1 GB, and NautilusTrader peak reported.
+- **0D:** check 14.
 
-**If XWayland fails,** record the failure and escalate to the maintainer
-(D17). The same applies if the restricted engine build fails (D13). Do not silently fall back
-to a browser product.
+**Any FAIL, or any infeasible artifact,** is escalated to the maintainer with
+its evidence (D13, D17). There is no silent fallback to a browser product, a
+relaxed D1, or another display stack.
 
 **References:**
-- [Tauri sidecars](https://tauri.app/develop/sidecar/) (not used)
-- [Debian packaging](https://tauri.app/distribute/debian/)
-- [Capabilities](https://v2.tauri.app/security/capabilities/)
+- [Tauri capabilities](https://v2.tauri.app/security/capabilities/)
+- [Tauri CSP](https://v2.tauri.app/security/csp/)
 - [WebDriver testing](https://v2.tauri.app/develop/tests/webdriver/)
-- tao `Window` docs on Wayland
+- [Debian maintainer scripts](https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html)
+- [systemd.service `ExecStop` / `TimeoutStopSec`](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)
+- [logind D-Bus API](https://www.freedesktop.org/software/systemd/man/latest/org.freedesktop.login1.html)
 - [SQLite `synchronous`](https://www.sqlite.org/pragma.html#pragma_synchronous)
-- [SQLite online backup](https://www.sqlite.org/backup.html)
-- Nautilus rc9 `crates/pyo3/Cargo.toml` and `bar-execution.md`
-  ("Order submission timing")
+- [SQLite triggers](https://www.sqlite.org/lang_createtrigger.html)
+- [`flock(2)`](https://man7.org/linux/man-pages/man2/flock.2.html)
+- [`openat2(2)`](https://man7.org/linux/man-pages/man2/openat2.2.html)
+- Nautilus rc9: `crates/pyo3/Cargo.toml`, `crates/pyo3/src/lib.rs`,
+  `python/pyproject.toml`, and `bar-execution.md`

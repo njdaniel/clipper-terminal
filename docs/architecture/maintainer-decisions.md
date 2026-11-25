@@ -180,8 +180,8 @@ Recorded from the machine on 2026-11-25:
 ## Reconciliation list (historical; applied in revisions 2 and 3)
 
 These were the tasks for the draft author, and they have been carried out. The
-current state is in the ADR file. Items still pending are listed there as
-P1–P8.
+current state is in the ADR file. P1–P8 were decided in D13–D21. Anything still
+open is listed in the ADR file under "Open items".
 
 - **ADR-002:** v2 line, exact RC pin, CPython 3.13 (review P0-1; no
   maintainer objection was raised).
@@ -344,3 +344,78 @@ not automatically.
 alpha scope, and alpha documents do not name it. They use the generic term
 **"external AI orchestration tools"**: Clipper works with such tools only
 through its public APIs and MCP, and never depends on one.
+
+## Decisions on the Codex follow-up questions (2026-11-25)
+
+These answer questions 1–3 of [`codex-review-2.md`](codex-review-2.md#6-remaining-open-questions-for-the-maintainer).
+Questions 4 and 5 are still open. Revision 4 carries proposed defaults for
+them, P9 and P10 in the ADR file.
+
+### D22. Execution-timing enforcement: test both, prefer native support
+
+**Decision:** Phase 0 tests two ways of enforcing `after_watermark` (D14):
+
+- **(a) Native.** An upstream-supported rc9 configuration, constrained so that
+  timers and end-of-feed drains cannot release orders against stale book
+  state. If an upstream next-event settlement mode or hook can be added, that
+  counts as native too.
+- **(b) Clipper gate.** A narrow eligibility gate on the matching path: an
+  order may match only against a book update derived from a new feed event for
+  its own instrument.
+
+**Native support is preferred.** Clipper adopts (b) only if (a) cannot pass
+the counterexample suite. Proposing a native mode upstream is part of either
+outcome.
+
+### D23. Runtime versions install side by side
+
+**Decision:** each release's runtime (CPython, engine, service code) installs
+**side by side** with earlier ones, as a separately versioned package. A newer
+runtime activates only once no paper session or job is using the old one. Old
+runtimes are removed only by an explicit cleanup that checks they are unused.
+This replaces "one package with versioned directories": Codex showed dpkg
+deletes the old version's files from that layout during upgrade.
+
+### D24. Logout timeout, supervised shutdown, and one controller per session
+
+**Logout:**
+- When a session's controlling login ends, the worker gets a **30-second
+  graceful end**: halt the strategy, cancel open orders, record the outcomes,
+  write the terminal record (`logout`) and seal the journal.
+- If that runs past 30 s, a **supervised shutdown** stops the worker. It
+  **preserves the history** and marks the session `interrupted` (reason
+  `logout_timeout`), with whatever was committed.
+
+**Multiple logins:**
+- Multiple windows, including windows in different logins of the same user,
+  may view a paper session.
+- Each local paper session has **exactly one active controller**. Only the
+  controller can issue human order-changing actions: approve, cancel, flatten,
+  re-enable and stop.
+- Control moves only by an **explicit control transfer**, which is recorded in
+  the journal.
+- The session's lifetime follows its **controller's** login. Logging out of a
+  non-controlling login does not end the session.
+
+### D25. Phase 0 fixture data, retention and export
+
+**Decision:**
+- Phase 0 uses **synthetic data**: OHLCV bars **plus bid/ask quotes**, with
+  full **provenance** (generator, seed, version, declared corporate-action
+  coverage).
+- For all data, Clipper stores or exports market data **only when the licence
+  allows**. Otherwise it records that the data was withheld and flags it
+  (`driving_data_retained=false`, export field withheld).
+
+### D26. Initial performance and memory targets
+
+**Decision (initial targets, to be revisited after measurement):**
+- **Chart interaction:** at least **30 FPS sustained**, with a **target of
+  60 FPS**.
+- **Desktop memory:** under **1 GB**.
+- **NautilusTrader memory** is measured **separately**, and its **peak usage
+  is reported**. No limit is set yet.
+
+**Interpretation to confirm:** "desktop" means the Tauri shell, all webview
+processes and the Clipper service, measured as total PSS. NautilusTrader worker
+processes are not included.
