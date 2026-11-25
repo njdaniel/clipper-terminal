@@ -156,9 +156,14 @@ pass.
       fall back when a monitor is unplugged;
     - resize and DPI changes;
     - tray on COSMIC;
-    - **desktop memory < 1 GB** total PSS (shell, all webview processes and
-      the service) with two windows open;
-    - NautilusTrader peak memory reported separately.
+    - the **memory soak (D27)**: a 2-hour scripted workload with two windows.
+      Each process group (shell, webviews, service, NautilusTrader workers)
+      must plateau after a 15-minute warm-up, growing less than 5% and not
+      rising across cycles. Closing windows and finishing jobs must bring
+      memory back within 10% of baseline, with no orphaned webview
+      processes. Run 20 sequential backtests and check that per-run peak
+      doesn't rise. Report peak and steady-state memory for each group,
+      including NautilusTrader. There is no fixed cap.
 11. **Native Wayland: diagnostic only.** Run the same matrix and record the
     results. They inform an escalation but are not a fallback.
 12. **If XWayland fails:** stop and escalate to the maintainer (D17). CEF is
@@ -207,7 +212,8 @@ For each check, record:
 - **0B:** checks 5–9, including the relay, side-by-side upgrade, controller
   logout and timeout, seal, lease and halt tests.
 - **0C:** check 10, **under XWayland**: 30 FPS sustained, detached-window
-  restore, desktop under 1 GB, and NautilusTrader peak reported.
+  restore, the memory soak passing with no leaks, and NautilusTrader peak
+  reported.
 - **0D:** check 14.
 
 **Any FAIL, or any infeasible artifact,** is escalated to the maintainer with

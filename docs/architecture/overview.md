@@ -919,8 +919,9 @@ traces.
 `user-price-lines` and `accessibility` plugins. No drawing tools or editor in
 alpha.
 
-**Targets.** Initial targets (D26), measured inside the webview under
-XWayland on the reference machine, using fixture data.
+**Targets.** Initial targets (D26, D27), measured inside the webview under
+XWayland on the reference machine, using fixture data. There is **no fixed
+memory cap**. Clipper must run smoothly and must not leak memory.
 
 | Measure | Initial target | Protocol |
 |---|---|---|
@@ -930,8 +931,9 @@ XWayland on the reference machine, using fixture data.
 | Cached reads | p95 < 200 ms | Fixed mix: 70% `get_bars` (5k), 20% chart state, 10% results; 1,000 requests |
 | Event to UI | p95 < 250 ms | 1,000 change-log events |
 | Concurrent load | Chart targets still met | Two fixture backtests (1 year of minute bars, 1 symbol) running |
-| **Desktop memory** | **< 1 GB** total PSS: shell, all webview processes and the Clipper service | Sampled during the pan/zoom and concurrent runs, with two windows open |
-| **NautilusTrader memory** | **Measured separately; report peak** (no limit yet) | Peak per backtest and paper worker, from cgroup `memory.peak` |
+| **No leaks: steady state** | After a 15-minute warm-up, each process group (shell, webviews, service, NautilusTrader workers) plateaus. Growth over the rest of the run stays under 5% and does not rise across cycles. | 2-hour scripted soak with two windows: pan/zoom, symbol and timeframe switches, detached windows opened and closed every 10 minutes, stream reconnects, repeated backtests. PSS sampled every 60 s. |
+| **No leaks: release** | Closing windows and finishing jobs brings memory back within 10% of the pre-cycle baseline, with no orphaned webview processes | End of each soak cycle |
+| **NautilusTrader memory** | **Measured separately; peak reported** (no cap). No rise in per-run peak over 20 sequential backtests; a 2-hour replay paper session plateaus. | cgroup `memory.peak` and PSS samples |
 
 Reports include the engine build, display mode, GPU driver, WebKitGTK
 version, and whether each sample was warm or cold. A launch slower than 30 s

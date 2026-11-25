@@ -86,7 +86,7 @@ or real-money date is promised.
 
 **UI, performance and release:**
 - [ ] The UI shows service-computed indicators, markers, equity, drawdown and warnings, each linked to its manifest.
-- [ ] D26 targets: ≥ 30 FPS sustained (target 60) and desktop memory < 1 GB under XWayland, with NautilusTrader peak reported.
+- [ ] D26 and D27 targets under XWayland: ≥ 30 FPS sustained (target 60), and a 2-hour memory soak with no leaks (plateau after warm-up, release after windows close and jobs finish, no orphaned webview processes), with NautilusTrader peak reported. No fixed memory cap.
 - [ ] Webview least privilege; logs redacted.
 - [ ] Release evidence: the LGPL override tested, including across an upgrade; source provided only as the licences require; maintainer and legal review done (D20).
 - [ ] Threat model and audit-chain limits published. The maintainer approves the release.
@@ -100,6 +100,7 @@ or real-money date is promised.
 - [ ] **Durability:** kills at every boundary; expiry after a lost receipt; a gateway outage during commits; disk full; power loss; a crash between the journal and `app.db`. Exactly one terminal record per session, and sealed journals refuse every mutation.
 - [ ] **Limits:** Clipper's limits, exposure reservation, collars as limit prices, and stale-feed blocking.
 - [ ] **Stops:** the controller's stop, cancel, flatten and emergency stop; MCP `paper:halt` with `on_stop` suppressed and queued commands withdrawn. All report actual outcomes.
+- [ ] **Memory (D27):** a 2-hour replay-fed paper session plateaus, with no leak in the worker or the service.
 - [ ] **Data:** cache database backing absent. Retention and export filter follow the licence (D25). No paid keys in CI.
 
 ## Risk register
@@ -111,7 +112,7 @@ or real-money date is promised.
 | Lost, duplicate or unsealed paper events | High | Outbox and receipts, one-transaction seal, stable-inode lease, fault suite. |
 | Logout drain longer than 30 s | High | Bounded drain, supervised stop, `interrupted` with history preserved (D24). |
 | Side-by-side packaging complexity | High | Versioned runtime packages, admission fence, `prerm` guard, two-version test (D23). |
-| WebKitGTK on the NVIDIA driver; memory budget | High | XWayland-first matrix; D26 targets; escalate on failure (D17). |
+| WebKitGTK on the NVIDIA driver; memory leaks in long sessions | High | XWayland-first matrix; D26 frame-rate targets; D27 soak and release tests; escalate on failure (D17). |
 | Webview origin or CSP behaviour | High | Origins recorded in 0B; shell-served CSP; fallback to a fixed port or a Rust bridge. |
 | Nautilus v2 RC churn | High | Exact pin; changes confined to the adapter; fixture suite on every pin change. |
 | LGPL and AGPL obligations | High | Release evidence; override test; maintainer and legal review (D20). |

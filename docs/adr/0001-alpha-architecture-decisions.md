@@ -34,17 +34,17 @@ it rather than rewriting it.
 | ADR-017 | **Packaging and display (D11, D23).** **Side-by-side** `clipper-runtime-<version>` packages under `/opt/clipper/<version>/`, each built at its final path, plus a `clipper` package with the shell, launchers and units. A new runtime is activated through an admission fence and a state file. Workers stay pinned to their runtime. `prerm` refuses removal while a runtime is in use; `clipper runtime prune` cleans up. **XWayland first** (D7, D17): escalate if it fails; Wayland is a diagnostic only; CEF only at the maintainer's direction. | One package with versioned directories removed the old files on upgrade (Codex). | Two-version upgrade with an active worker; deferred activation; prune; removal refused while in use; clean install and offline launch; display and GPU matrix. |
 | ADR-018 | **Windows later.** Interfaces for the native channel (named pipe with an ACL for the user's SID), service manager, worker supervisor (holding the Job Object handle), login watcher (WTS), locks, paths, webview origin, packaging and stop. | — | Portability review; a Windows spike before Windows is scheduled. |
 | ADR-019 | **Session controller (D24).** Exactly one controller per local paper session: a human principal bound to a logind session. Only the controller can approve, cancel, flatten, re-enable, stop or end the session. Control moves only by explicit release or take; each transfer is journalled and invalidates pending approvals. Other windows and logins are read-only. The session's lifetime follows the controller's login. MCP is never the controller; `paper:halt` works without control. | With no controller, two logins could act at once and "logout" would be ambiguous. | Tests: two logins, transfer while an approval is pending, logout by a non-controller, logout by the controller, refusal of a non-controller's actions. |
-| ADR-020 | **Initial performance and memory targets (D26).** Chart pan and zoom: **≥ 30 FPS sustained, target 60**. **Desktop memory < 1 GB** total PSS for the shell, all webview processes and the Clipper service. **NautilusTrader worker memory is measured separately** and its peak reported; no limit yet. These are initial targets. | Setting limits before measuring would be guesswork. | Phase 0 protocol (overview §10) on the reference machine under XWayland. |
+| ADR-020 | **Initial performance and memory targets (D26, D27).** Chart pan and zoom: **≥ 30 FPS sustained, target 60**. **No fixed memory cap.** Instead, a **no-leak requirement**: in a 2-hour soak, every process group plateaus after warm-up (growth < 5%, not rising across cycles), and memory returns to within 10% of baseline once windows close and jobs finish. NautilusTrader memory is measured separately and its peak reported. All thresholds are initial. | A fixed cap before any measurement would be arbitrary. Leaks hurt long-running desktop sessions more than a high but stable footprint does. | Phase 0 soak protocol (overview §10) on the reference machine under XWayland. |
 
 ## Decision log
 
 - **P1–P8:** D13–D21.
 - **Codex follow-up questions 1–5:** D22–D26.
+- **D27** supersedes D26's memory cap.
 
 Full text is in [`maintainer-decisions.md`](../architecture/maintainer-decisions.md).
 
-**Interpretation to confirm:** D26's "desktop" means the shell, the webviews
-and the service, excluding NautilusTrader workers.
+D27 replaces D26's 1 GB desktop limit with the no-leak requirement.
 
 ## Review protocol
 

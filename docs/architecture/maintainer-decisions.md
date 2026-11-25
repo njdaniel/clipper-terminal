@@ -412,10 +412,40 @@ deletes the old version's files from that layout during upgrade.
 **Decision (initial targets, to be revisited after measurement):**
 - **Chart interaction:** at least **30 FPS sustained**, with a **target of
   60 FPS**.
-- **Desktop memory:** under **1 GB**.
+- ~~**Desktop memory:** under **1 GB**.~~ *Superseded by D27: no fixed
+  memory cap.*
 - **NautilusTrader memory** is measured **separately**, and its **peak usage
   is reported**. No limit is set yet.
 
-**Interpretation to confirm:** "desktop" means the Tauri shell, all webview
-processes and the Clipper service, measured as total PSS. NautilusTrader worker
-processes are not included.
+*The earlier interpretation question about what "desktop" includes is moot
+under D27.*
+
+### D27. No fixed memory cap; require smooth operation and no leaks
+
+**Decision (supersedes D26's 1 GB desktop limit):**
+- There is **no fixed memory cap** for the desktop or the service.
+- Clipper must **run smoothly**. D26's interaction target is unchanged: at
+  least 30 FPS sustained, target 60.
+- Clipper must **not leak memory**.
+- NautilusTrader memory is still measured separately, and its peak is
+  reported.
+
+**How "no leaks" is tested.** These are initial criteria, adjustable after
+Phase 0. Claude proposed the thresholds; the maintainer may change them.
+
+- **Soak run.** A 2-hour scripted workload with two windows open. It pans and
+  zooms, switches symbols and timeframes, opens and closes detached windows
+  every 10 minutes, reconnects streams, and repeats fixture backtests.
+  Memory (PSS) is sampled every 60 s for each process group: the shell, the
+  webview processes, the service, and the NautilusTrader workers.
+- **Steady state.** After a 15-minute warm-up, each group's memory must
+  plateau. Growth over the rest of the run must stay under 5% of its
+  post-warm-up level, and must not keep rising across repeated cycles.
+- **Release.** Closing the detached windows and finishing the jobs must
+  bring the shell, webview and service memory back to within 10% of the
+  baseline taken before the cycle. No webview processes may be left
+  orphaned.
+- **Engine.** Twenty sequential fixture backtests in fresh workers must show
+  no rise in per-run peak. A 2-hour replay-fed paper session must reach a
+  plateau.
+- **Reporting.** Peak and steady-state memory are reported for every group.
