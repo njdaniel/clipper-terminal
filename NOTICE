@@ -1,0 +1,30 @@
+Clipper Terminal
+Copyright (C) 2026 Whalesback Systems LLC
+
+This product is developed by Whalesback Systems LLC.
+
+Licensed under the GNU Affero General Public License, version 3 or (at your
+option) any later version. See the LICENSE file for the full license text.
+
+-------------------------------------------------------------------------------
+Third-party components
+-------------------------------------------------------------------------------
+
+This product includes or depends on third-party software. Each component
+remains under its original license, and its copyright notices and attribution
+requirements are kept intact. Nothing in this project's license changes the
+terms that apply to those components.
+
+The full list of components, their licenses, and their copyright holders is in
+THIRD_PARTY_NOTICES.md. The full text of each third-party license is in the
+LICENSES/ directory.
+
+If a component is distributed under the Apache License 2.0 and ships its own
+NOTICE file, the attribution notices from that file are reproduced below, as
+section 4(d) of that license requires.
+
+--- Begin reproduced upstream NOTICE content ---
+
+(none yet)
+
+--- End reproduced upstream NOTICE content ---
