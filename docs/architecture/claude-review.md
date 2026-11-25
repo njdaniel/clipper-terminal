@@ -5,6 +5,8 @@
 **Reviewed:** `docs/architecture/overview.md`, `docs/adr/0001-alpha-architecture-decisions.md` and `docs/architecture/implementation-plan.md` on `docs/architecture-alpha` at `37ae864`
 **Status:** Review only. This document does not approve the design, and it does not change the proposal documents. Reconciliation and sign-off belong to the maintainer.
 
+> **Errata (2026-11-25):** the independent [Codex review](codex-review.md) contradicted several claims in this review. The corrections are listed in [`claude-review-2.md` § Errata](claude-review-2.md#errata-after-the-codex-review). This review is otherwise left as written.
+
 ## Verdict
 
 **The direction is right, but three decisions must change before the backlog is created.**

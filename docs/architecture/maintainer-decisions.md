@@ -6,10 +6,10 @@
 
 These answer the six open questions in
 [`claude-review.md`](claude-review.md#unresolved-questions-for-the-maintainer).
-They are inputs to reconciliation: the proposal documents (`overview.md`,
-`adr/0001-alpha-architecture-decisions.md`, `implementation-plan.md`) still
-need revising to match them. The section "Reconciliation still required" below
-lists what changes.
+They were inputs to reconciliation, which has since been applied to the
+proposal documents (revisions 2 and 3). The decisions themselves are unchanged.
+Where a consequence was worded too strongly, it is corrected inline and marked
+*Corrected after the Codex review*.
 
 ## D1. Paper trading in alpha is session-scoped, and there is no live trading
 
@@ -55,12 +55,19 @@ cannot produce.
 - Order-changing actions from AI still need explicit human approval in the
   Clipper UI or CLI.
 - The server refuses approval and policy routes for the MCP token.
-- Each approval is bound to a hash of the exact intent, so adding WebAuthn
-  later needs no API change.
+- Each approval is bound to a hash of the exact intent.
+  *Corrected after the Codex review:* the approval envelope is versioned now,
+  with an explicit evidence type, so a future WebAuthn evidence type can be
+  added without changing the intent binding. The exact future API is left
+  open, and a protected verifier and confirmation display are still required
+  (ADR-007).
 - The docs publish the local threat model. Same-user agents can read Clipper's
   files, its API token and the data-provider keys.
-- The audit journal is hash-chained, so edits made outside Clipper are
-  detectable even though they can't be prevented.
+- The audit journal is hash-chained.
+  *Corrected after the Codex review:* this is a local integrity check. It
+  detects corruption, edits to individual rows and truncation relative to the
+  recorded head. It does **not** detect a consistent rewrite by a process that
+  can write both stores (ADR-015).
 
 **Future (required before real-money trading, Clipper Cloud, or running
 strategies from unknown sources):**
@@ -170,10 +177,11 @@ Recorded from the machine on 2026-11-25:
 - The browser UI does not depend on the display server. Nothing in alpha may
   require Wayland-only or X11-only APIs.
 
-## Reconciliation still required
+## Reconciliation list (historical; applied in revisions 2 and 3)
 
-Owner: the draft author, during reconciliation. Maintainer sign-off comes
-after.
+These were the tasks for the draft author, and they have been carried out. The
+current state is in the ADR file. Items still pending are listed there as
+P1–P8.
 
 - **ADR-002:** v2 line, exact RC pin, CPython 3.13 (review P0-1; no
   maintainer objection was raised).
@@ -206,8 +214,10 @@ a tested secondary mode.
 
 **Consequence:** under X11, any same-user program can read the screen and
 inject input into Clipper's windows. This is accepted for alpha under D2 and
-ADR-015. Future approvals must rely on proof of human presence, which holds
-under either display mode.
+ADR-015. Future approvals must rely on proof of human presence.
+*Corrected after the Codex review:* whether that holds under either display
+mode is unverified, and depends on a protected verifier and confirmation
+display (ADR-007).
 
 ### D8. MCP is the primary AI control interface
 

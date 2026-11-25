@@ -1,23 +1,30 @@
 # Clipper Alpha: phased delivery and release gates
 
-**Status:** proposed, for review under issue #1. This is a plan, not a backlog
-or a commitment. Revised 2026-11-25 for the desktop-first direction and
-maintainer decisions D1–D6.
+**Status:** proposed for review under issue #1. This is a plan, not a backlog
+or a commitment. Revision 3 (2026-11-25) addresses the Codex review. Items
+marked (pending P*n*) are listed in the
+[ADR file](../adr/0001-alpha-architecture-decisions.md#pending-maintainer-decisions).
 
-**Assumptions:** one Linux reference machine (see `overview.md` §13), two
-coding agents plus an independent reviewer, synthetic and user-supplied data,
-and no paid data until Alpha-P stage 2. Agent hours are not engineering
-throughput.
+**Assumptions:**
+- one Linux reference machine (`overview.md` §13);
+- two coding agents plus an independent reviewer;
+- synthetic and user-supplied data;
+- no paid data until Alpha-P stage 2.
+
+Agent hours are not engineering throughput.
 
 ## Milestones
 
 ```mermaid
 flowchart LR
-  S0[Phase 0: spikes, desktop + engine + packaging] --> AP[Architecture approval]
+  S0A[0A engine artifact + timing] --> S0B[0B package, identity, lifecycle, durability]
+  S0B --> S0C[0C display + GPU, XWayland first]
+  S0C --> S0D[0D workspace contract proxy]
+  S0D --> AP[Architecture approval]
   AP --> F[Phase 1: foundation and contracts]
   F --> M[Phase 2: MCP research slice, headless]
   M --> D[Phase 3: desktop research workspace]
-  D --> R[Phase 4: Alpha-R hardening and .deb]
+  D --> R[Phase 4: Alpha-R hardening, .deb, release evidence]
   R --> GR{Alpha-R gate}
   GR --> P1[Phase 5: replay-fed paper sessions]
   P1 --> P2[Phase 6: live-feed paper sessions]
@@ -27,82 +34,86 @@ flowchart LR
 
 | Phase | Scope | Depends on | Exit gate |
 |---|---|---|---|
-| 0 | [Desktop validation spike](desktop-validation.md). Engine pin spike (Nautilus v2 RC inside a packaged CPython 3.13 environment). Reconcile the reviews; maintainer sign-off. | none | Spike evidence recorded (PASS / FAIL / NOT RUN), blockers decided, ADRs accepted or amended. |
-| 1 | Monorepo with locked uv, npm and Cargo dependencies; CI covering lint, types, tests, licence and secret scans; domain DTOs; API and event schemas; scope model; `app.db` migrations; worker launcher on systemd; trading adapter skeleton. | Phase 0 | Fresh checkout builds; engine smoke in CI; OpenAPI client generated; no real-execution adapter anywhere in the dependency tree. |
-| 2 | **MCP-first research slice (D4):** dataset import and validation, catalog, coverage, strategy registration by hash, deterministic backtest worker, results and trade log. Exposed through the MCP SDK v2, then the CLI. No UI. | Phase 1 | Claude Code and Codex run journey 1 end to end; the expected-ledger fixture passes; two parallel jobs and a cancellation work; scope-denial tests pass. |
-| 3 | **Desktop research workspace:** Tauri shell with service attach, a single docked window, a chart with server-computed indicators, results, trade markers, workspace state, the MCP workspace tools, and a tray indicator. Then detachable chart windows and multi-monitor restore under XWayland. | Phase 2 (contracts), and the shell parts of Phase 0 | Journeys 2 and 3 pass; windows converge on agent changes; stale revisions are rejected; performance measured in the webview; desktop E2E through WebdriverIO or `tauri-driver`. |
-| 4 | Alpha-R hardening: `.deb` with bundled runtime, upgrade and uninstall, backup and restore, local web defences, licence inventory and NOTICE, docs, known limitations. | Phase 3 | **Alpha-R gate** below. |
-| 5 | **Paper sessions fed by replayed data:** session worker, journal, `flock` lease, idempotent commands, intents and approvals (desktop and CLI), Clipper limits, stop, cancel, flatten and emergency stop, plus the MCP paper tools. | Alpha-R | Kill tests pass; approval tests pass; the journal is complete and readable after an interruption. |
-| 6 | **Live-feed paper sessions:** one provider adapter behind the feed boundary, staleness blocking, data badges, and recording only if the licence allows. | Phase 5, provider spike | **Alpha-P gate** below. |
-| Later | Resuming paper sessions, WebAuthn approvals, strategy isolation, drawing tools, editor, optimization, screener, broader instruments, Windows, Cloud, broker paper accounts. | separate | Each gets its own ADRs and review. |
+| 0 | The [validation spike](desktop-validation.md), as proofs 0A–0D, reported independently. The maintainer decides P1–P8. Codex confirms these fixes. | none | Every proof recorded as PASS, FAIL or NOT RUN; Go criteria met or failures decided; ADRs accepted or amended. |
+| 1 | Monorepo with locked uv, npm and Cargo dependencies. Restricted engine wheel build in CI. CI covering lint, types, tests, licence and secret scans. Domain DTOs, the approval envelope, API and stream schemas. The grant model and capability matrix. `app.db` migrations. Worker launcher with launch intents. Trading adapter skeleton. | Phase 0 | Fresh checkout builds. Engine smoke runs from the restricted wheel. The artifact inspection gate is in CI. OpenAPI client generated. |
+| 2 | **MCP-first research slice (D4).** Dataset import from staged roots, validation, catalog, coverage. Strategy registration (snapshot, static validation) with **human acknowledgement through the CLI**. Deterministic backtest worker with the `after_watermark` timing default. Results and trade log from the typed projection. Exposed through MCP grants, then the CLI. | Phase 1 | Claude Code and Codex complete journey 1, including the CLI acknowledgement step. The expected-ledger fixture passes. Parallel jobs and cancellation work. Invocation and denial tests pass for each grant. |
+| 3 | **Desktop research workspace.** Shell with identity proof and attach. One docked window. Chart with indicators computed in the service, plus results and trade markers. Workspace state and the stream contract. MCP workspace tools. Tray. Then detachable windows and restore under XWayland. | Phase 2; 0B and 0C | Journeys 2 and 3 pass. Windows converge. Stale revisions and epoch changes behave as specified. Performance protocol run in the webview. Desktop E2E passes. |
+| 4 | **Alpha-R hardening.** `.deb` with versioned prefixes. Upgrade with active work; uninstall. Backup and restore. Local web defences. **Release evidence** (payload inventory, checksums, source mapping, notices, AGPL source, tested LGPL override, pending P8). Docs and known limitations. | Phase 3 | **Alpha-R gate.** |
+| 5 | **Paper sessions fed by replayed data.** Session worker. Outbox, receipt and outcome chain. `flock` lease; terminal takeover and sealing. Intents and approvals (desktop and CLI). Clipper limits and exposure reservation. Stop, cancel, flatten and emergency stop for humans. `paper:halt` for MCP (pending P3). MCP paper tools. Logout drain (pending P4). | Alpha-R | Durability fault suite passes. Approval tests pass. Exactly one terminal record per session. |
+| 6 | **Live-feed paper sessions.** One provider adapter. Decide where the feed client lives before credentials arrive (ADR-010). Staleness blocking and badges. Retention per licence (pending P7). | Phase 5; provider spike | **Alpha-P gate.** |
+| Later | Paper resume; WebAuthn and protected approval; strategy isolation; multi-file strategies; drawing tools; editor; optimization; screener; Windows; Cloud; broker paper accounts. | separate | Their own ADRs and reviews. |
 
-**Effort:** no schedule is given until Phase 0 reports. Phase 0 is timeboxed
-at 3–6 working days for both spikes. Size Alpha-R and Alpha-P separately
-from the spike results, including the risks in the register below. No public
-beta or real-money date is promised.
+**Effort:** no schedule is given until Phase 0 reports; Phase 0 itself is
+timeboxed at 4–8 working days. Estimate Alpha-R and Alpha-P separately from
+its results. No beta or real-money date is promised.
 
 ## Workstream handoffs
 
-- **Foundation owner:** Pydantic DTOs, OpenAPI generation, scope model and
-  contract tests, before anyone else starts.
-- **Trading and data:** catalog, fixtures, adapter, fee model, workers,
-  journal. The UI never invents financial results.
-- **MCP and CLI:** tools, host configuration and scope enforcement, and the
-  first consumer of every contract.
-- **Desktop:** Tauri shell, service attach, windows, packaging, and the shared
-  React workspace against contract fixtures.
-- **Independent reviewer:** adversarial tests and review. Never reviews their
+- **Foundation:** DTOs, the approval envelope, OpenAPI, the grant model and
+  contract tests come first.
+- **Trading and data:** restricted wheel, adapter, specifications, catalog,
+  fixtures, workers and journal. The UI never invents financial results.
+- **MCP and CLI:** grants, tools, host configuration, the acknowledgement CLI.
+  This stream is the first consumer of every contract.
+- **Desktop:** shell, identity proof, lifecycle, packaging, windows, and the
+  shared React workspace.
+- **Independent reviewer:** adversarial and fault tests. Never reviews their
   own code. Shared contracts change only through review.
 
 ## Alpha-R gate
 
-- [ ] Phase 0 spike evidence reviewed; open blockers explicitly accepted or resolved.
-- [ ] Clean install of the `.deb` on the reference machine. No developer toolchain is needed, the app works offline with synthetic fixtures, and upgrade and uninstall keep user data.
-- [ ] The shell attaches to exactly one authenticated service. A second launch, closing the last window, a shell crash and reopening all behave as specified. Stopping the service reports the actual state. MCP and CLI work with no window open.
-- [ ] MCP from Claude Code and Codex: tools are listed, import, coverage, backtest submit, status, cancel, results and trade log all work, as do the workspace read and write tools. Pagination, redaction and scope denial are tested.
-- [ ] Docked workspace, then detachable charts on two monitors under XWayland. Resize, DPI and monitor-removal fallback work. Wayland limitations are documented.
-- [ ] Imported fixtures validate. Timestamps, calendar, sessions, hashes and the close-stamp-to-open-display mapping are correct.
-- [ ] Financial fixtures pass: fees (one shared model), precision, insufficient cash, look-ahead, split refusal, ambiguity detector warnings, and reproducible runs.
-- [ ] The UI shows candles, volume, server-computed indicators, trade markers, equity, drawdown and warnings, each linked to its manifest. No mock numbers.
-- [ ] Performance targets measured inside the Tauri webview on the reference GPU and driver, with the display mode recorded.
-- [ ] Local web defences tested: Host and Origin checks, CSRF, token handling, CSP and Tauri capabilities. Logs are redacted.
-- [ ] Licence inventory covers Python, Rust crates and npm. Lightweight Charts' NOTICE and attribution are present. Dataset entitlements are documented.
-- [ ] Known limitations and the threat model (ADR-015) are published. The maintainer approves the release.
+- [ ] Phase 0 evidence reviewed; P1–P8 decided.
+- [ ] The engine artifact passes inspection: no real-account execution factory, provenance recorded (P1).
+- [ ] Clean `.deb` install on the reference machine. Service, CLI and MCP all run without a development environment. Works offline with fixtures. Upgrade with active work and uninstall keep data.
+- [ ] Identity proof and authenticated reads, writes and subscriptions work on the installed package. Spoofed listeners are rejected, and concurrent clients work.
+- [ ] Lifecycle: single instance, last-window detach with tray, shell crash, service restart with adoption, explicit drain, logout behaviour.
+- [ ] MCP from Claude Code and Codex: invocation tests for each grant, denial tests, the CLI acknowledgement step, and jobs that survive the host exiting.
+- [ ] Docked workspace, then detached charts restored on two monitors under XWayland. Wayland limits documented.
+- [ ] Fixtures validate. Calendar, half days, DST, instrument metadata, the close-to-open display mapping and markers by execution time are all correct.
+- [ ] Financial fixtures pass through the packaged engine: `after_watermark` timing, order-level fee caps, effective-dated fees, precision and tick validation, insufficient cash, competing stop and target orders, split refusal, and the independent ledger.
+- [ ] The UI shows candles, volume, service-computed indicators, markers, equity, drawdown and warnings, each linked to its manifest.
+- [ ] The performance protocol runs in the webview under XWayland on the reference GPU.
+- [ ] Webview least privilege: the commands manifest, per-window capabilities, navigation denial, CSP and token handling.
+- [ ] Release evidence complete, with a tested LGPL override and AGPL source. Lightweight Charts' NOTICE taken from its tag.
+- [ ] Threat model and audit-chain limits published. The maintainer approves the release.
 
 ## Alpha-P gate
 
-- [ ] Paper sessions run from a replay feed, then a live feed. No route to a real account exists in the build.
-- [ ] Approvals are bound to the intent hash. Expiry, replay, tampering, cross-session use and MCP-refusal tests pass, and the red-team results are recorded (ADR-007).
-- [ ] Clipper's limits (position, loss, duration, instruments, order types) are enforced, and a stale feed blocks new orders.
-- [ ] Kill tests at submit, ack, fill and persist: no duplicate orders, the session ends *interrupted* with its journal intact, and no silent reset.
-- [ ] Nautilus cache database backing is shown to be disabled for sandbox sessions.
-- [ ] Stop, cancel, flatten (with its own authorization) and emergency stop report actual outcomes.
-- [ ] Closing windows and disconnecting the agent do not stop a session.
-- [ ] The provider's terms are reviewed, recording is enabled only if permitted, and CI uses no paid keys.
+- [ ] Paper sessions run from a replay feed, then a live feed. The artifact gate still holds.
+- [ ] The approval envelope is bound to its digest. Expiry, replay, tampering, cross-session and MCP-refusal tests pass. Red-team record kept.
+- [ ] Durability: kills at every boundary, lost and concurrent retries, gateway restart while a worker lives, disk full and abrupt power loss. Nothing is published before its commit. Exactly one terminal record. Sealed journals refuse writes.
+- [ ] Clipper limits and exposure reservation hold. Price collars are enforced as limit prices. A stale feed blocks orders.
+- [ ] Human stop, cancel, flatten and emergency stop, plus MCP `paper:halt` (P3), report actual outcomes.
+- [ ] Closing windows and disconnecting the agent do not stop a session. Logout and upgrade behave as decided (P4).
+- [ ] Cache database backing is disabled. Provider terms reviewed. Retention flags are correct (P7). No paid keys in CI.
 
 ## Risk register
 
 | Risk | Severity | Mitigation / decision gate |
 |---|---|---|
-| WebKitGTK rendering on the NVIDIA proprietary driver | High | Phase 0 test under XWayland and Wayland, with and without the DMABUF renderer. Fallback: evaluate the Tauri 3 CEF runtime, with maintainer approval. |
-| Nautilus v2 RC API churn before `2.0.0` | High | Exact pin; churn confined to the adapter; fixture suite runs on every pin change. |
-| Packaging Python, Nautilus and the shell into one `.deb` | High | Phase 0 packaging test on the reference machine; build on an Ubuntu 22.04 base; no frozen binary. |
-| Look-ahead, intrabar and corporate-action errors | High | Independent fixtures, ambiguity detector, split refusal, price-return labelling. |
-| Same-user agent bypassing approval | High (accepted for alpha, D2) | Documented threat model, MCP refusal, hash-chained audit; WebAuthn later. |
-| Duplicate commands or lost journal events | High | Idempotent `command_id`, one transaction per event, `flock` lease, kill tests. |
+| Restricted engine build infeasible or costly to maintain | High | Proof 0A; propose per-adapter features upstream; decision P1. |
+| Same-close fills or other timing look-ahead | High | `after_watermark` default; 0A timing fixture; independent ledger. |
+| Lost or duplicated paper events | High | Outbox, receipt and outcome chain; `FULL` durability; fenced takeover; fault suite. |
+| WebKitGTK on the NVIDIA proprietary driver | High | XWayland-first matrix in 0C. CEF evaluation is already authorized (D10); **adopting** it needs an amendment to ADR-017. |
+| Packaged Python prefix breaks after install | High | Build at the final path, verify build paths and ELF dependencies, clean-install test in 0B. |
+| WebSocket auth or origin behaviour in WebKitGTK | High | Stream tickets; actual origins recorded in 0B; a Rust bridge if the origin is opaque. |
+| Nautilus v2 RC churn | High | Exact pin; adapter confined; fixture suite on every pin change. |
+| LGPL or AGPL distribution obligations | High | Release evidence; tested override; counsel (P8). |
+| Same-user agent bypass | High (accepted for alpha, D2) | Threat model, grants, audit limits disclosed; protected approval later. |
 | Secrets or licensed data in the public repository | High | Ignore rules, secret scanning, synthetic CI data. |
-| Wayland window placement | Medium | XWayland default; semantic layout saved apart from native bounds. |
-| Tauri 3 migration | Medium | Thin shell, few plugins, pinned 2.12.x. |
-| Equity feed cost or licensing | Medium | Free data first; paid feed only in Alpha-P stage 2. |
-| Windows portability debt | Medium | Platform interfaces from ADR-018; Windows spike before Windows is scheduled. |
-| Overbuilding the UI or Cloud | Medium | MCP first; one docked window before detached windows; no editor, browser product or Cloud work. |
+| Wayland placement and Tauri 3 migration | Medium | XWayland default; thin shell; 2.12.x pin. |
+| Equity feed cost or licensing | Medium | Free data first; paid feed only in stage 2; retention policy (P7). |
+| Windows portability debt | Medium | Interfaces from ADR-018, including the Job Object supervisor; Windows spike before scheduling. |
+| Overbuilding | Medium | MCP first; proofs before polish; one docked window before detached windows. |
 
 ## Backlog after approval (not created yet)
 
-Foundation and CI; trading adapter and fee models; data import and catalog;
-MCP and CLI; backtesting and financial verification; desktop shell, lifecycle
-and packaging; workspace and charting; paper sessions and journal; approvals
-and limits; licence and security hardening. Later: resume, WebAuthn,
-isolation, drawings, editor, Windows, Cloud. Each issue needs a testable gate,
-its dependencies, an owner, non-goals and evidence. Create the epics only
-after maintainer sign-off.
+Foundation and CI, including the restricted engine build; trading adapter and
+specifications; data import, calendars and catalog; strategy snapshots and
+acknowledgement; MCP grants and CLI; backtesting and financial verification;
+desktop shell, identity, lifecycle and packaging; workspace, streams and
+charting; paper sessions, outbox, journal and takeover; approvals and limits;
+release evidence, licensing and security hardening. Later: resume, protected
+approval, isolation, drawing tools, editor, Windows, Cloud. Each issue needs a
+testable gate, dependencies, an owner, non-goals and evidence. Create the
+epics only after maintainer sign-off.

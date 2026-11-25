@@ -265,3 +265,36 @@ been verified at runtime.
    link it from PR #2.
 4. Accept, or amend, the ADRs based on that evidence. Only then create the
    backlog.
+
+## Errata after the Codex review
+
+**Added 2026-11-25.** The independent [Codex review](codex-review.md) checked
+claims in both Claude reviews and in the revision-2 documents, and found the
+errors below. The text above is left as written; revision 3 of the proposal
+documents carries the fixes. Where Codex marked a claim **[contradicted]**, it
+supplied evidence, and Claude accepts every correction listed here.
+
+| Claude claim | Correction |
+|---|---|
+| Review 1 P0-2: both sandbox lines build a fresh `SimulatedExchange`. | Only v1 does. rc9 uses an in-memory `SandboxMatchingEngine`. The stale-cache failure path was an inference and remains unverified, although D1's cache prohibition stands without it. |
+| Review 1 P1-4 and revision 2: "orders submitted from `on_bar` are processed after that bar." | Wrong in the sense that matters. With zero latency, rc9 settles at **the same close the strategy observed** (Codex ran the upstream example). There is no next-bar-open mode. Fixed by the `after_watermark` default (ADR-013). |
+| Review 1 P1-4: v2 defaults to 10× leverage. | True for the backtest exchange only. The sandbox defaults to 1×. |
+| Review 1 P1-4: "pass the same configured fee model instance to backtest and sandbox." | Impossible across processes. Use one versioned **specification**, instantiated in each process. |
+| Review 1 P1-4: use 4-decimal price precision for every equity, citing Rule 612. | Four decimals is storage precision. Order increment rules are separate and date-dependent (the amendment's compliance date is November 2027), and Section 31 fees changed during 2026. |
+| Review 1 P0-1: v2 has no runtime dependencies, so it cannot conflict. | Report generation needs pandas. Clipper uses its own typed projection instead. |
+| Review 1 P1-3 and review 2's status table: unique command IDs, a lease and transactional projection settle persistence; `synchronous=NORMAL` loses at most the last transaction. | Not sufficient. The flow spans two stores, an IPC hop and volatile engine state, and a dead worker cannot write its own end. `NORMAL` can lose committed transactions. Fixed by the outbox, receipts, publish-after-commit, `FULL` and fenced takeover (ADR-008). |
+| Revision 2 and D1: there is no execution adapter able to reach a real account in the build. | Contradicted for the ordinary rc9 wheel, which ships importable Binance and Interactive Brokers execution factories. Review 1 noted the IB adapter but didn't connect it to D1. Fixed by the artifact gate (ADR-002, P1). |
+| Revision 2: `uv venv --relocatable` with a bundled CPython. | Codex reproduced links still pointing at staging after the move. Fixed by building at the final path (ADR-017). |
+| Revision 2: a token header on every request, including the WebSocket. | Browsers cannot set WebSocket headers, and the bearer was sent before the service proved its identity. Fixed by stream tickets and the HMAC identity challenge (ADR-016). |
+| Revision 2: capabilities list each window's commands. | Insufficient: `invoke_handler` commands reach every window unless declared through `AppManifest::commands`. CSP does not deny navigation. Fixed in overview §4. |
+| Revision 2 and D2: the hash chain makes edits outside Clipper detectable. | Overclaimed. A consistent rewrite passes. This is now stated as a local integrity check (ADR-015). |
+| Review 2: future WebAuthn holds under either display mode, and needs no API change. | Unverified. Fixed by the versioned approval envelope and protected-verifier prerequisites (ADR-007). |
+| Review 1 P1-7: modifying or linking Clipper owes AGPL §13 permanently. | Too broad. §13 covers modified versions offered for remote interaction; conveyance and combined works need their own analysis. |
+| Revision 2: leaving Nautilus as an ordinary wheel satisfies LGPL. | Not by itself. A tested replacement path and release evidence are required (ADR-011, P8). |
+| Review 2 P1-D7: Playwright *cannot* drive the Tauri webview. | Codex rated this unverified as an absolute claim. The fix, using `tauri-driver`, stands either way. |
+| Revision 2: MCP `emergency_stop` may cancel orders. | Contradicts D2. Proposed default: MCP `paper:halt` only (P3). |
+| Revision 2: Phase 0 includes the full multi-window and indicator behaviour. | Too broad for a disposable spike. Reduced to a contract proxy (0D). |
+
+Codex could not query the NVIDIA driver from inside its sandbox. Claude's
+direct query (RTX 4090, 580.159.03) stands, but that runtime still needs
+recording during Phase 0.
