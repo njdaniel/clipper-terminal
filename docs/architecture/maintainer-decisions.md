@@ -465,3 +465,22 @@ ADR-020.
 
 The numbered epics in the implementation plan (`fbcaf6a`) are the provisional
 roadmap.
+
+### D29. Exception to Phase 0's synthetic-only rule: local real-data F4 investigation
+
+**Decision (2026-11-27):** approved as proposed, for the F4 follow-up to proof 0A (#4). This is a narrow
+exception to D25's synthetic-only rule for Phase 0.
+
+**Controls:**
+- **Input.** The only input is the Leviathan development fixture
+  `engine/data/databento/glbx-mes-mbo-jul15/mbo.2026-07-15.dbn.zst` (Databento `GLBX.MDP3` `mbo`,
+  `MES.FUT`, 2026-07-15). A path allowlist enforces this. The `glbx-mes-mbo-may2026/` STRAT-004
+  lockbox is never opened.
+- **Engine and data.** Stock PyPI `nautilus_trader==2.0.0rc9` only. No engine modifications, no
+  data purchases, and no Databento API calls.
+- **Local outputs.** All raw and derived outputs stay local, in a scratch directory outside every
+  repository.
+- **Publication: aggregates only.** May be published: code, configuration, pass/fail tables, probe
+  and match counts, and unitless ratios (engine fill quantity ÷ tape-implied quantity), plus the input
+  file's SHA-256 and its contract and date. May not be published: prices, sizes, timestamps, order
+  IDs, tick-level or derived data, or charts.
