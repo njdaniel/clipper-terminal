@@ -1,0 +1,396 @@
+{
+ "input_sha256": "49456bda2b7ab92991354526241a97ae5cb148af1fdc4fd4a5bcc57edcebfcb5",
+ "contract": "MESU6 (Nautilus id MESU26.GLBX), GLBX.MDP3 mbo, MES.FUT parent",
+ "date": "2026-07-15",
+ "config": {
+  "engine": "stock PyPI nautilus_trader 2.0.0rc9",
+  "windows_utc": [
+   "13:35-13:45",
+   "16:00-16:10",
+   "19:45-19:55"
+  ],
+  "probes_per_window": {
+   "aggr_3x_5s": 10,
+   "big_20x_2s": 10,
+   "passive_1lot_25s": 10
+  },
+  "gate": "release on first strictly later event batch; cancel at horizon",
+  "venue": "MARGIN/NETTING, zero fees, FillModel(), latency 0, trade_execution on",
+  "trades": "from databento-dbn decode at ts_recv-1ns (Nautilus MBO decode drops T/F records)",
+  "instrument": "constructed from public CME spec (tick 0.25, multiplier 5); sandbox expiry set relative to wall clock",
+  "parity_slice": "16:00:00-16:02:00 UTC, L3 snapshot + slice, sandbox replay at 1x"
+ },
+ "counts_by_config": {
+  "L1_liq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 28,
+    "over": 1,
+    "under": 1,
+    "decision_mismatch": 6,
+    "ratio_engine_over_truth": 1.003
+   },
+   "big": {
+    "n": 30,
+    "exact": 7,
+    "over": 22,
+    "under": 1,
+    "decision_mismatch": 9,
+    "ratio_engine_over_truth": 1.3629
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 12,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L1_liq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 28,
+    "over": 1,
+    "under": 1,
+    "decision_mismatch": 6,
+    "ratio_engine_over_truth": 1.003
+   },
+   "big": {
+    "n": 30,
+    "exact": 7,
+    "over": 22,
+    "under": 1,
+    "decision_mismatch": 9,
+    "ratio_engine_over_truth": 1.3629
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 12,
+    "ratio_engine_over_truth": 1.0
+   }
+  },
+  "L1_noliq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 28,
+    "over": 1,
+    "under": 1,
+    "decision_mismatch": 6,
+    "ratio_engine_over_truth": 1.003
+   },
+   "big": {
+    "n": 30,
+    "exact": 7,
+    "over": 22,
+    "under": 1,
+    "decision_mismatch": 9,
+    "ratio_engine_over_truth": 1.3629
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 12,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L1_noliq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 28,
+    "over": 1,
+    "under": 1,
+    "decision_mismatch": 6,
+    "ratio_engine_over_truth": 1.003
+   },
+   "big": {
+    "n": 30,
+    "exact": 7,
+    "over": 22,
+    "under": 1,
+    "decision_mismatch": 9,
+    "ratio_engine_over_truth": 1.3629
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 12,
+    "ratio_engine_over_truth": 1.0
+   }
+  },
+  "L2_liq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L2_liq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   }
+  },
+  "L2_noliq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L2_noliq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   }
+  },
+  "L3_liq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L3_liq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   }
+  },
+  "L3_noliq_noq": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 27,
+    "over": 3,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.1111
+   }
+  },
+  "L3_noliq_q": {
+   "aggr": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   },
+   "big": {
+    "n": 30,
+    "exact": 9,
+    "over": 21,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.3668
+   },
+   "pass": {
+    "n": 30,
+    "exact": 30,
+    "over": 0,
+    "under": 0,
+    "decision_mismatch": 0,
+    "ratio_engine_over_truth": 1.0
+   }
+  }
+ },
+ "ratios": {
+  "fill_source_decomposition_L3_liq_q": {
+   "aggr": {
+    "engine_book_over_truth_book": 1.012,
+    "engine_trade_over_truth_trade": 0.843,
+    "overfilled_with_book_excess": 0,
+    "overfilled_with_trade_excess": 0
+   },
+   "big": {
+    "engine_book_over_truth_book": 1.455,
+    "engine_trade_over_truth_trade": 0.202,
+    "overfilled_with_book_excess": 21,
+    "overfilled_with_trade_excess": 1
+   }
+  }
+ },
+ "parity": {
+  "L1_liq_q": {
+   "probe_count": 6,
+   "sandbox_equals_backtest": 6,
+   "backtest_equals_truth": 5,
+   "sandbox_equals_truth": 5,
+   "replay_lag_ms_p99": 1.943634,
+   "replay_lag_ms_max": 4.424059
+  },
+  "L2_liq_q": {
+   "probe_count": 6,
+   "sandbox_equals_backtest": 6,
+   "backtest_equals_truth": 5,
+   "sandbox_equals_truth": 5,
+   "replay_lag_ms_p99": 2.083793,
+   "replay_lag_ms_max": 10.118868
+  },
+  "L3_liq_q": {
+   "probe_count": 6,
+   "sandbox_equals_backtest": 6,
+   "backtest_equals_truth": 5,
+   "sandbox_equals_truth": 5,
+   "replay_lag_ms_p99": 1.987852,
+   "replay_lag_ms_max": 13.186156
+  },
+  "L3_noliq_noq": {
+   "probe_count": 6,
+   "sandbox_equals_backtest": 6,
+   "backtest_equals_truth": 5,
+   "sandbox_equals_truth": 5,
+   "replay_lag_ms_p99": 1.824132,
+   "replay_lag_ms_max": 7.035269
+  },
+  "L3_noliq_q": {
+   "probe_count": 6,
+   "sandbox_equals_backtest": 6,
+   "backtest_equals_truth": 5,
+   "sandbox_equals_truth": 5,
+   "replay_lag_ms_p99": 1.848545,
+   "replay_lag_ms_max": 4.254611
+  }
+ },
+ "notes": "Truth = order-identity model from raw records (independent decoder). Aggregates only per D29."
+}

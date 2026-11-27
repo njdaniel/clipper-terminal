@@ -275,3 +275,160 @@ The blocking case is `partial_fills` (F4). The options, with my recommendation f
 
 Other inputs for the ruling: caveat C1; F2 and F9, which bind on the implementation, not the
 architecture; and deviations 1–2, which proof 0B (#5) covers.
+
+---
+
+## F4 extension: L1/L2/L3 on synthetic tapes and real MES MBO (2026-11-27)
+
+**Request:** extend F4 before any NautilusTrader modification or fork.
+**Approval:** the maintainer approved the real-data step as **D29**, a narrow exception to D25.
+**Constraints met:**
+- stock PyPI `nautilus_trader==2.0.0rc9` only;
+- no engine changes;
+- no data purchases and no Databento API calls;
+- the real-data experiment stayed local.
+
+**Published from real data:** only the D29 aggregates. That means code, configuration, counts, unitless
+ratios and verdicts, the input's SHA-256, the contract and the date. No prices, sizes, timestamps, order
+IDs, tick-level data or charts. Every real-data script imports
+[`harness/f4_real_guard.py`](harness/f4_real_guard.py), which:
+- allows exactly one input file;
+- refuses the `glbx-mes-mbo-may2026` STRAT-004 lockbox;
+- refuses output directories inside a git repository;
+- filters anything published through an allowlist of keys.
+
+### Stage A: synthetic tapes (publishable)
+
+**A1. Stock rc9 reproduces F4.** The stock PyPI wheel reproduces F4 **identically, 12 of 12 runs**, to the
+restricted build ([`evidence/f4/synthetic-l1-probe-stock-rc9.jsonl`](evidence/f4/synthetic-l1-probe-stock-rc9.jsonl)).
+The simulation-only patch did not cause F4.
+
+**A2. Equivalent L1/L2/L3 views from one synthetic MBO tape per scenario** (explicit
+`liquidity_consumption` × `queue_position`, backtest and sandbox, 96 runs, 0 errors:
+[`evidence/f4/synthetic-depth-grid-stock-rc9.jsonl`](evidence/f4/synthetic-depth-grid-stock-rc9.jsonl),
+[`harness/f4_depth_probe.py`](harness/f4_depth_probe.py)). Truth is defined by order identity on the tape.
+
+| Scenario (truth) | Upstream default liquidity | `liquidity_consumption=True` | L1 vs L2 vs L3 |
+|---|---|---|---|
+| S1, the order already hit persists (100) | ✗ overfills; the backtest also fills twice at one event | ✓ | identical |
+| S2, new order IDs arrive at the same price (300) | ✗ backtest; **✓ sandbox** | ✗ under-fills (100) | identical |
+| S3, the level is deleted, then a new order arrives (200) | ✗ | ✗ under-fills (100) | identical |
+| S4, passive order behind queue (20, then 30) | ✗ without `queue_position`; **✓ with it** | same | identical |
+
+**Conclusions:**
+- **Higher resolution does not change aggressive fills.** Consumption is tracked per price level, not per
+  order ID, even with an L3 book.
+- **L1 cannot distinguish S1 from S2**, because they produce identical quotes. That is the root of F4 at
+  L1. L3 *can* distinguish them, but the engine doesn't use order identity for consumption.
+- **`queue_position=True` is correct at all resolutions,** provided trades precede the book updates they
+  cause, as on the real tape.
+
+### Stage B: real MES MBO tape (local; aggregates only)
+
+**Input:**
+- Leviathan development fixture `glbx-mes-mbo-jul15/mbo.2026-07-15.dbn.zst`: Databento `GLBX.MDP3` `mbo`,
+  `MES.FUT` parent, 2026-07-15.
+- SHA-256 `49456bda2b7ab92991354526241a97ae5cb148af1fdc4fd4a5bcc57edcebfcb5`.
+- Contract: front month **MESU6** (`MESU26.GLBX`).
+
+**Method:**
+- **Decoding.** Book deltas come from Nautilus's `DatabentoDataLoader`. Trades and the truth book come
+  from Databento's own `databento-dbn` decoder (Apache-2.0), run in a **separate** environment. The two
+  decoders agree on every front-contract book record: identical order IDs and sizes, in identical order.
+  Nautilus `ts_init` equals Databento `ts_recv`.
+- **Derived views.** L2 and L1 are derived from the same deltas: L2 as per-batch level updates, L1 as a
+  quote on every batch that touches a top level. Trades are injected at `ts_recv − 1 ns`, so they precede
+  the updates they cause.
+- **Probes.** Three 10-minute regular-hours windows. Each minute has three probes: a 3× displayed-size
+  aggressive limit (5 s horizon), a 20× aggressive limit (2 s), and a passive 1 lot (25 s). That makes 90
+  probes, all released by the Clipper gate and cancelled at their horizon.
+- **Truth.** An order-identity model computed from the raw records
+  ([`harness/f4_real_experiment.py`](harness/f4_real_experiment.py)). It was cross-checked by L2, which
+  matches truth exactly on the 3× and passive probes.
+- **Instrument.** Constructed from the public CME specification (0.25 tick, ×5 multiplier), because the
+  approved input contains no definition records. For the sandbox only, the expiry is set relative to the
+  wall clock (see F13).
+
+**Full-day backtest, 12 configurations** ([`evidence/f4/real-mbo-aggregates.json`](evidence/f4/real-mbo-aggregates.json)).
+"Exact" means the probe's total fill equals truth.
+
+| Configuration | 3× aggressive (n=30) | **20× aggressive (n=30)** | Passive 1 lot (n=30) |
+|---|---|---|---|
+| L2 or L3, any `liquidity_consumption`, `queue_position=True` | 30 exact | **9 exact, 21 over; ratio 1.367** | **30 exact** |
+| L2 or L3, any `liquidity_consumption`, `queue_position=False` | 30 exact | 9 exact, 21 over; 1.367 | 27 exact, 3 over; 1.111 |
+| L1, any `liquidity_consumption`, `queue_position=True` | 28 exact (1 over, 1 under; ratio 1.003) | 7 exact, 22 over; 1.363 | 30 exact |
+| L1, any `liquidity_consumption`, `queue_position=False` | 28 exact (1 over, 1 under; ratio 1.003) | 7 exact, 22 over; 1.363 | 27 exact, 3 over; 1.111 |
+
+L1 decisions differ from truth on 6–12 probes, because L1 updates less often. L1 rows are indicative only.
+
+**What the real tape shows:**
+- **`liquidity_consumption` has no effect on the real tape.** On and off give identical results in every
+  configuration.
+- **Where the 20× over-fill comes from** (L3, consumption and queue on):
+  - the engine's **book-driven** fills are **1.455×** truth's book-driven fills;
+  - all **21** over-filled probes show book-side excess, and only 1 shows trade-side excess;
+  - the engine's trade-driven fills are 0.202× truth's.
+- **Interpretation:** the engine re-offers resting liquidity that the probe, by order identity, has already
+  taken. This is consistent with consumption resetting on every fresh update at a level. On a real MBO book
+  the best level updates almost continuously, so consumption never effectively engages. **This is F4 on
+  real data.**
+
+**Backtest vs sandbox parity:** the 120 s slice is 16:00:00–16:02:00 UTC. An L3 snapshot plus the slice
+reproduces the full-day backtest on 6 of 6 probes. The sandbox replays at 1×.
+
+| Configuration | Sandbox = backtest | Backtest = truth | Sandbox = truth | Replay lag p99 / max |
+|---|---|---|---|---|
+| L3, consumption, queue | **6/6** | 5/6 | 5/6 | 1.99 / 13.2 ms |
+| L3, default, queue | **6/6** | 5/6 | 5/6 | 1.85 / 4.3 ms |
+| L3, default, no queue | **6/6** | 5/6 | 5/6 | 1.82 / 7.0 ms |
+| L2, consumption, queue | **6/6** | 5/6 | 5/6 | 2.08 / 10.1 ms |
+| L1, consumption, queue | **6/6** | 5/6 | 5/6 | 1.94 / 4.4 ms |
+
+On real data, **backtest and sandbox agree on every probe in every configuration**. The one mismatch with
+truth in each row is a 20× probe that over-fills by about 5%. The synthetic divergence (S2, default
+liquidity) comes from identical consecutive re-quotes, which this real slice didn't trigger. Treat parity
+as conditional, not proven.
+
+### New findings
+
+| ID | Finding | Consequence |
+|---|---|---|
+| F4-real | The large-order over-fill reproduces on the real MES tape at every resolution and every setting of `liquidity_consumption` (ratio 1.37 for 20× displayed size over 2 s). The source is book-side re-offering of identity-consumed liquidity. Orders at 3× displayed size match truth at L2 and L3. | **Neither higher-resolution data nor existing options resolve F4** for orders well above displayed size. |
+| F4-queue | `queue_position=True` matches order-identity truth for passive orders at L1, L2 and L3, on synthetic and real data, once trades are supplied ahead of their book updates. | **Resolved by existing configuration**, provided Clipper supplies trades (F12). |
+| F10 | `OrderBook.best_bid_size()` and `best_ask_size()` on an **L3** book return the **first order's** size, not the level total. An L2 book returns the total. | Strategy and gate code must size from `bids()[0].size()` / `asks()[0].size()`, or it silently sees a fraction of displayed liquidity. |
+| F11 | `DatabentoDataLoader.load_order_book_deltas(instrument_id=…)` **relabels every record** in a multi-contract (parent-symbol) file with that ID; it doesn't filter. | Load without the override and filter by decoded ID, or contracts are silently mixed. |
+| F12 | The rc9 MBO decode returns deltas only: trade (`T`) and fill (`F`) records are dropped. `load_trades` fails on an MBO file. | Trade-driven matching and queue tracking on MBO need trades from another decoder, supplied before the matching updates. |
+| F13 | The sandbox runs on the wall clock, so replaying historical futures data rejects orders as "contract has expired". | Paper replays of historical tape need clock-consistent instrument metadata, which is a design point for Alpha-P's replay feed. |
+
+### Revised recommendation for the F4 ruling
+
+Evidence now rules out "use higher-resolution data" and "change an existing option" as fixes for
+aggressive orders well above displayed size. The options, recommended first:
+
+1. **Clipper pre-trade size cap and upstream report (no engine change).**
+   - Cap each released order at a multiple of the *aggregate* displayed size at release, starting at 3×,
+     where L2 and L3 matched truth exactly on all 30 probes. Larger intents are sliced by the gate across
+     later eligible events.
+   - Pin `queue_position=True`.
+   - Supply MBO trades ahead of their updates.
+   - Report the identity-blind consumption on L3 books upstream, with these fixtures.
+2. **Clipper-owned identity accounting in the gate.** The gate tracks which resting order IDs it has
+   consumed on the L3 book and releases quantity only against identity-fresh liquidity. This is more
+   precise, but it is more Clipper code in the matching path and needs an ADR-013 amendment.
+3. **An upstream fix or a fork.** Upstream could adopt identity-aware L3 consumption. Forking is out of
+   scope until you approve it.
+
+### Reproducing stage B (local only; requires the licensed fixture)
+
+```bash
+W=/path/to/local/scratch   # outside any git repository
+uv venv --python 3.13 $W/dbn-venv && uv pip install --python $W/dbn-venv/bin/python databento-dbn zstandard
+mkdir -p $W/f4/config && cp <leviathan>/engine/backtests/v2/publishers.json $W/f4/config/
+cd spikes/00a/harness
+$W/dbn-venv/bin/python -I f4_real_extract.py $W/f4 MESU6                 # independent decode (local)
+$STOCK/bin/python f4_real_experiment.py truth  $W/f4
+$STOCK/bin/python f4_real_experiment.py engine $W/f4 L3 consumption queue $W/f4/config/publishers.json   # x12 configs
+$STOCK/bin/python f4_real_experiment.py score  $W/f4
+$STOCK/bin/python f4_real_parity.py backtest|sandbox $W/f4 L3 consumption queue $W/f4/config/publishers.json
+$STOCK/bin/python f4_real_publish.py $W/f4 ../evidence/f4/real-mbo-aggregates.json   # D29 filter
+```
